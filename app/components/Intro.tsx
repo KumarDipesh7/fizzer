@@ -1,6 +1,6 @@
 import { Trophy } from "lucide-react";
 
-export default function MissionSection() {
+export default function Intro() {
   return (
     <section className="bg-gray-100 py-16 px-4">
       <div className="mx-auto max-w-7xl">

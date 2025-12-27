@@ -43,16 +43,19 @@ export default function ProductsSection() {
             image="/news-1.jpg"
             title="One to One Sessions"
             description="This is a personalized 1-on-1 coaching experience where I help you fix your gameplay setup — the way pros actually do it."
+            href="/products/one-to-one"
           />
           <ProductsCard
             image="/news-2.jpg"
             title="Senstivity"
             description="If your sensitivity feels inconsistent…"
+            href="/products/senstivity"
           />
           <ProductsCard
             image="/news-3.jpg"
             title="Control Layout"
             description="We’re proud to announce the expansion into female divisions, paving the way for new champions."
+            href="/products/control-layout"
           />
         </div>
       </div>

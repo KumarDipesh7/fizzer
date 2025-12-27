@@ -5,12 +5,15 @@ type ProductsCardProps = {
   image: string;
   title: string;
   description: string;
+  href: string;
 };
+
 
 export default function ProductsCard({
   image,
   title,
   description,
+  href,
 }: ProductsCardProps) {
   return (
     <div className="bg-black text-white">
@@ -30,11 +33,12 @@ export default function ProductsCard({
         <p className="mb-6 text-sm text-gray-300">{description}</p>
 
         <Link
-          href="#"
+          href={href}
           className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
         >
           Learn More <span>›</span>
         </Link>
+
       </div>
     </div>
   );
