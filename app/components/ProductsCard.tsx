@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type NewsCardProps = {
+type ProductsCardProps = {
   image: string;
   title: string;
   description: string;
 };
 
-export default function NewsCard({
+export default function ProductsCard({
   image,
   title,
   description,
-}: NewsCardProps) {
+}: ProductsCardProps) {
   return (
     <div className="bg-black text-white">
       {/* Image */}
@@ -20,7 +20,7 @@ export default function NewsCard({
           src={image}
           alt={title}
           fill
-          className="object-cover grayscale contrast-125"
+          className="object-cover contrast-125"
         />
       </div>
 

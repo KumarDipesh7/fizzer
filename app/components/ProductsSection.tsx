@@ -4,11 +4,11 @@ import {
   SiIntel,
   SiSteelseries,
 } from "react-icons/si";
-import NewsCard from "./NewsCard";
+import ProductsCard from "./ProductsCard";
 
-export default function NewsSection() {
+export default function ProductsSection() {
   return (
-    <section className="bg-[#f4f4f4] py-28">
+    <section id="products" className="bg-[#f4f4f4] py-28">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Sponsors */}
@@ -24,7 +24,7 @@ export default function NewsSection() {
         {/* Header */}
         <div className="mb-14 flex items-center justify-between">
           <h2 className="text-6xl font-extrabold uppercase tracking-tight text-black">
-            News
+            Our Products
           </h2>
 
           <div className="flex gap-3">
@@ -39,19 +39,19 @@ export default function NewsSection() {
 
         {/* Cards */}
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <NewsCard
+          <ProductsCard
             image="/news-1.jpg"
-            title="Giveaway"
-            description="Gear up for victory! Join FasterUI Esports giveaway and enter to win a premium gaming keyboard."
+            title="One to One Sessions"
+            description="This is a personalized 1-on-1 coaching experience where I help you fix your gameplay setup — the way pros actually do it."
           />
-          <NewsCard
+          <ProductsCard
             image="/news-2.jpg"
-            title="Academy Team"
-            description="Our Academy Team receives invaluable mentorship from experienced seniors, guiding them to success."
+            title="Senstivity"
+            description="If your sensitivity feels inconsistent…"
           />
-          <NewsCard
+          <ProductsCard
             image="/news-3.jpg"
-            title="Female Team"
+            title="Control Layout"
             description="We’re proud to announce the expansion into female divisions, paving the way for new champions."
           />
         </div>

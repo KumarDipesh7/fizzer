@@ -1,16 +1,16 @@
-import Hero from "./components/Hero";
-import NewsSection from "./components/NewsSection";
-import MissionSection from "./components/MissionSection";
-import MatchesSection from "./components/MatchesSection";
-import MerchSection from "./components/MerchSection";
-import JoinSection from "./components/JoinSection";
-import Footer from "./components/Footer";
+import Hero from "@/app/components/Hero";
+import ProductsSection from "@/app/components/ProductsSection";
+import MissionSection from "@/app/components/MissionSection";
+import MatchesSection from "@/app/components/MatchesSection";
+import MerchSection from "@/app/components/MerchSection";
+import JoinSection from "@/app/components/JoinSection";
+import Footer from "@/app/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <NewsSection />
+      <ProductsSection />
       <MissionSection />
       <MatchesSection />
       <MerchSection />

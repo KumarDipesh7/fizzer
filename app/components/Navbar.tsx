@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import FizzerImg from "@/public/fizzer.svg"
 
 export default function Navbar() {
   return (
@@ -6,10 +8,15 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         {/* Logo */}
         <div className="flex items-center gap-2 text-white font-bold text-xl">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded bg-white text-black">
-            ⚡
+          <span className="relative inline-flex h-8 w-8 items-center justify-center rounded overflow-hidden">
+            <Image
+              src={FizzerImg}
+              alt="FizZer logo"
+              fill
+              className="object-cover"
+            />
           </span>
-          FasterUI
+          FizZer
         </div>
 
         {/* Nav links */}
@@ -17,17 +24,20 @@ export default function Navbar() {
           <Link href="#" className="text-red-500">
             Home
           </Link>
-          <Link href="#" className="text-white hover:text-red-500">
-            News
+          <Link href="#products" className="text-white hover:text-red-500">
+            Products
           </Link>
           <Link href="#" className="text-white hover:text-red-500">
-            Our Mission
+            About
           </Link>
           <Link href="#" className="text-white hover:text-red-500">
-            Matches
+            Top Videos
           </Link>
           <Link href="#" className="text-white hover:text-red-500">
             Socials
+          </Link>
+          <Link href="https://www.youtube.com/@OnlyFizZer" className="text-white hover:text-red-500">
+            YouTube
           </Link>
         </nav>
 
