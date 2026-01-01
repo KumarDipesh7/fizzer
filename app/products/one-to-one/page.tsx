@@ -1,6 +1,120 @@
+// app/products/one-to-one/page.tsx
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function OneToOnePage() {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    customer_name: "",
+    customer_email: "",
+    customer_phone: "", // This will be used as both phone & WhatsApp
+    customer_message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      // Call your create-order API
+      const res = await fetch("/api/products/one-to-one/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer_name: formData.customer_name,
+          customer_email: formData.customer_email,
+          customer_phone: formData.customer_phone,
+          whatsapp_number: formData.customer_phone, // Same as phone
+          customer_message: formData.customer_message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        alert("Order creation failed: " + (data.error || "Unknown error"));
+        setLoading(false);
+        return;
+      }
+
+      // Load Razorpay script dynamically
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => openRazorpay(data);
+      script.onerror = () => {
+        alert("Failed to load Razorpay");
+        setLoading(false);
+      };
+      document.body.appendChild(script);
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
+      setLoading(false);
+    }
+  };
+
+  const openRazorpay = (orderData: any) => {
+    const options = {
+      key: orderData.key_id,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      name: "FizzerN Gaming",
+      description: "One-to-One Coaching Session",
+      order_id: orderData.razorpay_order_id,
+      handler: async function (response: {
+        razorpay_payment_id: string;
+        razorpay_order_id: string;
+        razorpay_signature: string;
+      }) {
+        const verifyRes = await fetch('/api/payment/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+            order_id: orderData.order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+            }),
+        });
+
+        const verifyData = await verifyRes.json();
+
+        if (verifyData.success) {
+            window.location.href = `/order-success?order_id=${orderData.order_id}`;
+        } else {
+            alert('Payment verification failed: ' + (verifyData.error || 'Unknown error'));
+        }
+      },
+      prefill: {
+        name: formData.customer_name,
+        email: formData.customer_email,
+        contact: formData.customer_phone,
+      },
+      theme: {
+        color: "#dc2626", // red-600
+      },
+      modal: {
+        ondismiss: () => {
+          setLoading(false);
+        },
+      },
+    };
+
+    // @ts-ignore
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
   return (
     <section className="bg-black text-white min-h-screen">
       {/* HERO */}
@@ -37,13 +151,8 @@ export default function OneToOnePage() {
           </h2>
 
           <p className="text-gray-300 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-
-          <p className="text-gray-300 mb-6">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
+            A 60-minute live video call where I personally review your gameplay,
+            fix your sensitivity, optimize controls, and answer all your questions.
           </p>
 
           <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -51,45 +160,62 @@ export default function OneToOnePage() {
             <li>Custom sensitivity setup</li>
             <li>HUD & control optimization</li>
             <li>Live Q&A session</li>
+            <li>Recording available on request</li>
           </ul>
         </div>
 
         {/* RIGHT — FORM */}
         <div className="bg-[#111] p-10">
           <h3 className="text-2xl font-extrabold uppercase mb-6">
-            Book Your Session
+            Book Your Session — ₹1499
           </h3>
 
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <input
               type="text"
+              name="customer_name"
               placeholder="Your Name"
+              required
+              value={formData.customer_name}
+              onChange={handleChange}
               className="w-full bg-black border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-red-500"
             />
 
             <input
               type="email"
+              name="customer_email"
               placeholder="Email Address"
+              required
+              value={formData.customer_email}
+              onChange={handleChange}
               className="w-full bg-black border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-red-500"
             />
 
             <input
               type="tel"
-              placeholder="Phone Number"
+              name="customer_phone"
+              placeholder="Phone / WhatsApp Number"
+              required
+              value={formData.customer_phone}
+              onChange={handleChange}
               className="w-full bg-black border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-red-500"
             />
 
             <textarea
-              placeholder="Tell us about your game & goals"
+              name="customer_message"
+              placeholder="Tell us about your game, device, current issues & goals (optional)"
               rows={4}
-              className="w-full bg-black border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-red-500"
+              value={formData.customer_message}
+              onChange={handleChange}
+              className="w-full bg-black border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-red-500 resize-none"
             />
 
             <button
               type="submit"
-              className="w-full bg-red-600 py-3 text-sm font-bold uppercase hover:bg-red-700 transition"
+              disabled={loading}
+              className="w-full bg-red-600 py-3 text-sm font-bold uppercase hover:bg-red-700 transition disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Proceed to Payment
+              {loading ? "Processing..." : "Proceed to Payment"}
             </button>
           </form>
         </div>
