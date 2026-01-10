@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const products = [
@@ -39,6 +39,7 @@ const products = [
 export default function ProductsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const handlePrev = () => {
     if (isAnimating) return;
@@ -116,17 +117,30 @@ export default function ProductsSection() {
     return () => clearInterval(interval);
   }, [isAnimating]);
 
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const cardWidth = slider.children[0]?.clientWidth || 0;
+    const gap = 24; // gap-6 = 1.5rem = 24px
+
+    slider.scrollTo({
+      left: (cardWidth + gap) * activeIndex,
+      behavior: "smooth",
+    });
+  }, [activeIndex]);
+
 
   return (
     <section id="products" className="bg-[#f4f4f4] py-28">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mb-14 flex items-center justify-between">
-          <h2 className="text-6xl font-extrabold uppercase tracking-tight text-black">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-black">
             Our Products
           </h2>
 
-          <div className="flex gap-3">
+          <div className="hidden md:flex gap-3">
             <button 
               onClick={handlePrev}
               disabled={isAnimating}
@@ -145,7 +159,7 @@ export default function ProductsSection() {
         </div>
 
         {/* 3D Carousel Container */}
-        <div className="relative h-[650px] overflow-hidden" style={{ perspective: '2000px' }}>
+        <div className="relative hidden md:block h-[650px] overflow-hidden" style={{ perspective: '2000px' }}>
           <div className="absolute inset-0 flex items-center justify-center">
             {products.map((product, index) => (
               <div
@@ -183,6 +197,46 @@ export default function ProductsSection() {
             ))}
           </div>
         </div>
+        {/* Mobile Slider */}
+        <div
+          ref={sliderRef}
+          className="md:hidden overflow-x-auto flex gap-6 snap-x snap-mandatory pb-6 scroll-smooth"
+        >
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="min-w-[85%] snap-center bg-black text-white shadow-xl rounded-lg overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative h-[260px] w-full">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="text-lg font-extrabold uppercase mb-2">
+                  {product.title}
+                </h3>
+
+                <p className="text-sm text-gray-300 mb-4 line-clamp-3">
+                  {product.description}
+                </p>
+
+                <a
+                  href={product.href}
+                  className="inline-block bg-red-600 px-5 py-3 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
+                >
+                  Get Now
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
 
         {/* Indicators */}
         <div className="flex justify-center gap-2 mt-8">

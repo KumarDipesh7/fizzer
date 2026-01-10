@@ -65,7 +65,7 @@ export default function NewVideoSection() {
       <div className="mx-auto max-w-7xl px-6">
 
         {/* ================= YOUTUBE CAROUSEL ================= */}
-        <div className="grid grid-cols-[1fr_1.6fr] items-center mb-28 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] items-center mb-20 md:mb-28 gap-10 md:gap-16">
 
           {/* LEFT INFO */}
           <div>
@@ -73,7 +73,7 @@ export default function NewVideoSection() {
               {currentVideo?.type === 'viewed' ? 'Most Viewed Video' : 'Latest Upload'}
             </p>
 
-            <h2 className="text-6xl font-extrabold uppercase leading-[0.95]">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase leading-[1] md:leading-[0.95]">
               Featured
               <br />
               <span className="text-white">Video</span>
@@ -99,8 +99,9 @@ export default function NewVideoSection() {
           {/* RIGHT FEATURED VIDEO */}
           <div
             onClick={() => currentVideo && window.open(currentVideo.url, '_blank')}
-            className="relative h-[420px] w-full overflow-hidden group cursor-pointer bg-black"
+            className="relative h-[260px] sm:h-[320px] md:h-[420px] w-full overflow-hidden group cursor-pointer bg-black"
           >
+
             {currentVideo ? (
               <>
                 {/* Thumbnail */}
@@ -123,11 +124,11 @@ export default function NewVideoSection() {
 
                 {/* Bottom info bar */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-xl font-bold leading-tight line-clamp-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold leading-tight line-clamp-2">
                     {currentVideo.title}
                   </h3>
 
-                  <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">
+                  <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-widest text-gray-400">
                     {currentVideo.type === 'viewed' ? 'Most Viewed' : 'Latest Video'}
                   </p>
                 </div>
@@ -149,7 +150,7 @@ export default function NewVideoSection() {
 
           <div className="h-px w-full bg-white/10 mb-2" />
 
-          <div className="space-y-1">
+          <div className="space-y-1 overflow-x-auto md:overflow-visible">
             <MatchRow
               result="L"
               date="Ended – Feb 14, 18:43"
@@ -201,7 +202,7 @@ function MatchRow({
   right: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-[40px_220px_1fr_160px_80px_160px] items-center py-4 text-sm border-b border-white/10">
+    <div className="min-w-[700px] md:min-w-0 grid grid-cols-[40px_220px_1fr_160px_80px_160px] items-center py-4 text-sm border-b border-white/10">
       <span className={`font-extrabold ${result === "W" ? "text-white" : "text-gray-500"}`}>
         {result}
       </span>

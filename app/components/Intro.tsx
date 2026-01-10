@@ -3,14 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Trophy } from "lucide-react";
 
-function useCountUp(target: number, duration: number = 2200) {
-  const ref = useRef(null);
+function useCountUp(target: number, duration = 2200) {
   const [value, setValue] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const refs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+    if (refs.current.length === 0) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -21,7 +20,6 @@ function useCountUp(target: number, duration: number = 2200) {
           const animate = (time: number) => {
             const progress = Math.min((time - startTime) / duration, 1);
 
-            // smooth ease-in-out (very stable)
             const eased =
               progress < 0.5
                 ? 2 * progress * progress
@@ -29,23 +27,29 @@ function useCountUp(target: number, duration: number = 2200) {
 
             setValue(eased * target);
 
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
+            if (progress < 1) requestAnimationFrame(animate);
           };
 
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
-    observer.observe(node);
+    refs.current.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [target, duration, hasAnimated]);
 
-  return { ref, value };
+  return {
+    value,
+    setRef: (el: HTMLElement | null) => {
+      if (el && !refs.current.includes(el)) {
+        refs.current.push(el);
+      }
+    },
+  };
 }
+
 
 export default function Intro() {
   const subs = useCountUp(90);
@@ -55,8 +59,79 @@ export default function Intro() {
   return (
     <section id="intro" className="bg-gray-100 py-16 px-4">
       <div className="mx-auto max-w-7xl">
-        {/* COLLAGE GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-hidden shadow-2xl">
+        {/* MOBILE VERSION */}
+        <div className="md:hidden space-y-6">
+
+          {/* Welcome */}
+          <div className="bg-black text-white p-8 text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
+              Welcome
+            </p>
+            <h2 className="mt-3 text-3xl font-extrabold uppercase leading-tight">
+              Swagat Hai Aapka
+              <br />
+              <span className="text-red-500">FizZer</span>
+              <br />
+              Ki Duniya Mein
+            </h2>
+            <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+              A space built for gamers and creators who want clarity, consistency, and real growth.
+            </p>
+          </div>
+
+          {/* Image */}
+          <div className="relative h-[350px]">
+            <img
+              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80"
+              className="w-full h-full object-cover"
+              alt="Esports Player"
+            />
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 bg-red-600 text-white py-8">
+            <div className="text-center">
+              <span ref={subs.setRef} className="text-5xl font-extrabold block">
+                {Math.round(subs.value)}K+
+              </span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                Subscribers
+              </span>
+            </div>
+            <div className="text-center">
+              <span ref={views.setRef} className="text-5xl font-extrabold block">
+                {Math.round(views.value)}M+
+              </span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                Views
+              </span>
+            </div>
+          </div>
+
+          {/* Players */}
+          <div className="bg-black text-white py-10 text-center">
+            <Trophy size={48} className="mx-auto mb-4 text-red-500" />
+            <span className="text-5xl font-extrabold block">50+</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">
+              Players & Creators Guided
+            </span>
+          </div>
+
+          {/* Mission */}
+          <div className="bg-black text-white p-8 text-center">
+            <h3 className="text-2xl font-extrabold uppercase leading-tight">
+              Our Mission
+            </h3>
+            <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+              Smart gameplay, strong mindset, and real content —
+              helping BGMI creators grow beyond shortcuts.
+            </p>
+          </div>
+
+        </div>
+
+        {/*DESKTOP COLLAGE GRID */}
+        <div className="hidden md:grid grid-cols-3 gap-0 overflow-hidden shadow-2xl">
           <div className="md:grid md:grid-rows-2 md:h-[700px]">
             {/* LEFT TOP — TEXT (50% of left column) */}
             <div className="bg-black p-6 md:p-10 flex items-center justify-center h-[300px] md:h-[350px]">
@@ -95,7 +170,7 @@ export default function Intro() {
             <div className="bg-red-600 flex flex-col items-center justify-center text-white py-6 gap-3 h-[280px] md:h-[280px]">
               <div className="text-center">
                 <span
-                  ref={subs.ref}
+                  ref={subs.setRef}
                   className="text-6xl md:text-7xl lg:text-8xl leading-none font-extrabold block tracking-tighter"
                 >
                   {Math.round(subs.value)}K+
@@ -106,7 +181,7 @@ export default function Intro() {
               </div>
               <div className="text-center">
                 <span
-                  ref={views.ref}
+                  ref={views.setRef}
                   className="text-6xl md:text-7xl lg:text-8xl leading-none font-extrabold block tracking-tighter"
                 >
                   {Math.round(views.value)}M+
