@@ -9,7 +9,7 @@ import {
 
 export default function JoinSection() {
   return (
-    <section className="w-full">
+    <section id="socials" className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* LEFT — RED PANEL */}
@@ -17,7 +17,7 @@ export default function JoinSection() {
           <h2 className="mb-12 text-6xl font-extrabold uppercase leading-tight text-white">
             Join
             <br />
-            FasterUI
+            FizZer
             <br />
             Family
           </h2>

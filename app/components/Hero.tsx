@@ -20,21 +20,26 @@ export default function Hero() {
         <Navbar />
 
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center text-white">
-          <p className="mb-4 text-xs font-semibold tracking-widest text-gray-300">
-            FASTER UI ESPORTS
+
+          {/* Small tagline */}
+          <p className="mb-4 text-xs font-semibold tracking-[0.3em] text-gray-300 uppercase">
+            FizZer Gaming
           </p>
 
-          <h1 className="text-4xl font-extrabold uppercase leading-tight md:text-6xl lg:text-7xl">
-            Where{" "}
-            <span className="text-red-500">Winning</span>
+          <h1 className="text-4xl font-extrabold leading-tight md:text-6xl lg:text-7xl">
+            <span className="uppercase">Swaagat Hai Aapka</span>
             <br />
-            Is The Only Option
+            <span className="text-red-500">FizZer</span>{" "}
+            <span className="uppercase">Ki Duniya Mein</span>
           </h1>
 
-          <button className="mt-8 bg-red-600 px-8 py-4 text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition">
-            Our Mission
+
+          {/* CTA */}
+          <button className="mt-10 bg-red-600 px-10 py-4 text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition">
+            Explore More
           </button>
         </div>
+
       </div>
     </section>
   );

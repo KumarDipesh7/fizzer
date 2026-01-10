@@ -1,3 +1,4 @@
+//app/components/ProductsCard.tsx
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +8,6 @@ type ProductsCardProps = {
   description: string;
   href: string;
 };
-
 
 export default function ProductsCard({
   image,
@@ -36,10 +36,12 @@ export default function ProductsCard({
           href={href}
           className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
         >
-          Learn More <span>›</span>
+          Get Now <span>›</span>
         </Link>
 
       </div>
     </div>
   );
 }
+
+//image="/news-1.jpg"

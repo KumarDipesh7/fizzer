@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const BOOKING_URL = "https://YOUR-THIRD-PARTY-LINK-HERE";
 
-export default function SensitivityPage() {
+export default function ThumbnailPackPage() {
   const [showTerms, setShowTerms] = useState(false);
   const [accepted, setAccepted] = useState(false);
 
@@ -21,7 +21,7 @@ export default function SensitivityPage() {
       <div className="relative h-[60vh]">
         <Image
           src="/hero-bg.jpg"
-          alt="Sensitivity Settings"
+          alt="Thumbnail Pack"
           fill
           className="object-cover opacity-40"
           priority
@@ -29,13 +29,13 @@ export default function SensitivityPage() {
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto max-w-7xl px-6">
             <h1 className="text-5xl md:text-6xl font-extrabold uppercase">
-              Pro
+              Thumbnail
               <br />
-              <span className="text-red-500">Sensitivity Settings</span>
+              <span className="text-red-500">Asset Pack</span>
             </h1>
             <p className="mt-4 max-w-xl text-gray-300">
-              Device-specific BGMI sensitivity packs built for consistency,
-              control, and real fights.
+              Gaming-focused thumbnail assets to help you design
+              eye-catching thumbnails faster and more consistently.
             </p>
           </div>
         </div>
@@ -51,57 +51,58 @@ export default function SensitivityPage() {
           </h2>
 
           <p className="text-gray-300 mb-6">
-            A <strong>device-specific BGMI sensitivity pack</strong>,
-            tested and trusted by players and creators.
+            A <strong>gaming-focused thumbnail asset pack</strong> designed
+            to help you create high-quality, attention-grabbing thumbnails
+            without starting from zero every time.
           </p>
 
           <ul className="space-y-4 text-gray-300">
             <li>
-              <strong>🎯 3 Sensitivity Options per Device</strong><br />
-              Low, Medium, and High — choose what fits your playstyle.
+              <strong>🖼 Thumbnail Backgrounds</strong><br />
+              High-quality gaming-style backgrounds.
             </li>
 
             <li>
-              <strong>✅ Creator & Player Tested Values</strong><br />
-              Refined through real usage, not random presets.
+              <strong>🔤 Fonts & Text Styles</strong><br />
+              Fonts and text treatments suitable for gaming thumbnails.
             </li>
 
             <li>
-              <strong>🔥 Better Control in Real Fights</strong><br />
-              Designed for sprays, tracking, and close-range combat.
+              <strong>✨ Glow & Light Effects</strong><br />
+              Elements to add depth, focus, and attention.
             </li>
 
             <li>
-              <strong>💸 Low-Cost, High-Value Setup</strong><br />
-              Premium sensitivity setups at a budget-friendly price.
+              <strong>🧩 Overlay & Design Assets</strong><br />
+              Shapes, highlights, and effects to enhance visual impact.
+            </li>
+
+            <li>
+              <strong>🎯 Additional Unique Elements</strong><br />
+              Exclusive creative assets to help your thumbnails stand out.
+            </li>
+
+            <li>
+              <strong>⚡ Easy-to-Use Format</strong><br />
+              Assets that can be easily combined in your designs.
             </li>
           </ul>
 
-          {/* BONUS */}
-          <div className="mt-8">
-            <h3 className="text-xl font-extrabold uppercase mb-3">
-              Bonus
-            </h3>
-            <p className="text-gray-300">
-              <strong>🎯 Sensitivity Mastery Drills</strong><br />
-              Simple daily drills to help you adapt faster and
-              master your sensitivity.
-            </p>
-            <p className="mt-2 text-gray-400 italic">
-              No guessing. No copying. Just apply, practice, and improve.
-            </p>
-          </div>
+          <p className="mt-6 text-gray-400 italic">
+            This pack gives you creative flexibility — without shortcuts
+            or guesswork.
+          </p>
         </div>
 
         {/* RIGHT — CTA CARD */}
         <div className="bg-[#111] p-12 md:p-14 lg:p-16 flex flex-col justify-between">
           <div>
             <h3 className="text-2xl font-extrabold uppercase mb-4">
-              Buy Sensitivity Pack
+              Buy Thumbnail Pack
             </h3>
             <p className="text-gray-300 mb-8">
-              This is a ready-to-use, device-specific sensitivity pack.
-              Not a personalized coaching service.
+              A ready-to-use asset pack for gaming creators.
+              Not a custom thumbnail design service.
             </p>
           </div>
 
@@ -131,19 +132,16 @@ export default function SensitivityPage() {
               Terms & Conditions
             </h2>
             <p className="text-sm text-gray-400 mb-6">
-              Sensitivity – Device Specific
+              Thumbnail Pack – Asset Based
             </p>
 
             <ul className="space-y-3 text-sm text-gray-300 leading-relaxed">
-              <li>This pack provides device-specific ready-to-use sensitivity values.</li>
-              <li>Sensitivities are near-optimal for most users of the device.</li>
-              <li>Regular practice and drills are required for best results.</li>
-              <li>Results vary based on gameplay habits and consistency.</li>
-              <li>This is not a personalized or custom sensitivity service.</li>
-              <li>Minor personal adjustments are allowed.</li>
-              <li>The pack is non-refundable and non-transferable once delivered.</li>
-              <li>No rank, KD, or competitive results are guaranteed.</li>
-              <li>Sharing, reselling, or redistributing is strictly prohibited.</li>
+              <li>This is an asset-based thumbnail pack, not a custom design service.</li>
+              <li>Results depend on your usage, creativity, and content quality.</li>
+              <li>The pack is intended for personal use only.</li>
+              <li>Once delivered, it is non-refundable and non-transferable.</li>
+              <li>Assets must not be shared, resold, or redistributed.</li>
+              <li>No guarantees for views, CTR, or channel growth.</li>
             </ul>
 
             {/* Checkbox */}
@@ -155,9 +153,9 @@ export default function SensitivityPage() {
                 className="mt-1 h-4 w-4 accent-red-600"
               />
               <p className="text-sm text-gray-300">
-                By purchasing this product, you acknowledge that{" "}
-                <strong>practice, patience, and consistency</strong>{" "}
-                are essential for mastering sensitivity.
+                By purchasing, you agree that this pack is a{" "}
+                <strong>creative support tool</strong>, not a shortcut
+                to virality or guaranteed growth.
               </p>
             </div>
 

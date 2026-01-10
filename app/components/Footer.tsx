@@ -19,7 +19,7 @@ export default function Footer() {
           <span className="flex h-10 w-10 items-center justify-center rounded bg-white text-black">
             <Zap size={20} />
           </span>
-          FasterUI
+          FizZer
         </div>
 
         {/* SOCIAL ICONS */}
@@ -59,8 +59,7 @@ export default function Footer() {
 
         {/* COPYRIGHT */}
         <p className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/70">
-          <FaHeart className="text-red-500" />
-          Made with love powered by inkyy.com
+          © 2026 FizZer. All rights reserved. Not affiliated with BGMI/PUBG Mobile.
         </p>
 
       </div>

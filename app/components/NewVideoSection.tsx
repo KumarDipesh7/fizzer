@@ -2,7 +2,7 @@ import { Zap, Gamepad2, Hand, Plane } from "lucide-react";
 
 export default function NewVideoSection() {
   return (
-    <section className="bg-black py-28 text-white">
+    <section id="vid" className="bg-black py-28 text-white">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* ================= NEXT MATCH ================= */}

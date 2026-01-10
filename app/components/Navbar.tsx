@@ -27,13 +27,13 @@ export default function Navbar() {
           <Link href="#products" className="text-white hover:text-red-500">
             Products
           </Link>
-          <Link href="#" className="text-white hover:text-red-500">
+          <Link href="#intro" className="text-white hover:text-red-500">
             About
           </Link>
-          <Link href="#" className="text-white hover:text-red-500">
+          <Link href="#vid" className="text-white hover:text-red-500">
             Top Videos
           </Link>
-          <Link href="#" className="text-white hover:text-red-500">
+          <Link href="#socials" className="text-white hover:text-red-500">
             Socials
           </Link>
           <Link href="https://www.youtube.com/@OnlyFizZer" className="text-white hover:text-red-500">

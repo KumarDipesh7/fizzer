@@ -37,7 +37,7 @@ export default function MerchSection() {
               href="#"
               className="inline-flex items-center justify-center bg-red-600 px-10 py-4 text-sm font-bold uppercase tracking-wide text-white hover:bg-red-700 transition"
             >
-              Shop Now
+              Coming Soon...
             </Link>
           </div>
 
