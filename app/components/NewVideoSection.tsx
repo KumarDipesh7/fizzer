@@ -20,7 +20,9 @@ export default function NewVideoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/api/youtube')
+    fetch('/api/youtube?_=' + Date.now(), {  // Adds timestamp to bust cache
+        cache: 'no-store',
+      })
       .then(res => res.json())
       .then(data => {
         const loadedVideos: Video[] = [];
@@ -38,6 +40,7 @@ export default function NewVideoSection() {
             type: 'recent',
           });
         }
+        console.log("Loaded videos:", loadedVideos);
 
         setVideos(loadedVideos);
       })
@@ -62,50 +65,69 @@ export default function NewVideoSection() {
       <div className="mx-auto max-w-7xl px-6">
 
         {/* ================= YOUTUBE CAROUSEL ================= */}
-        <div className="grid grid-cols-[1.2fr_2fr] items-center mb-28 gap-16">
+        <div className="grid grid-cols-[1fr_1.6fr] items-center mb-28 gap-16">
 
           {/* LEFT INFO */}
           <div>
-            <p className="mb-3 text-sm text-gray-400">
-              {currentVideo?.type === 'viewed' ? 'Most Viewed' : 'Latest Upload'}
+            <p className="mb-3 text-xs uppercase tracking-widest text-red-500">
+              {currentVideo?.type === 'viewed' ? 'Most Viewed Video' : 'Latest Upload'}
             </p>
 
-            <h2 className="text-6xl font-extrabold uppercase leading-none">
-              Top
+            <h2 className="text-6xl font-extrabold uppercase leading-[0.95]">
+              Featured
               <br />
-              Video
+              <span className="text-white">Video</span>
             </h2>
 
-            <p className="mt-4 text-sm text-gray-300">
+            <p className="mt-6 max-w-sm text-gray-400 text-sm leading-relaxed">
               {currentVideo?.title || 'Loading top video...'}
             </p>
 
-            <p className="mt-6 text-sm font-semibold text-red-500">
-              {currentVideo?.views
-                ? `${currentVideo.views.toLocaleString()} views`
-                : currentVideo?.likes
-                ? `${currentVideo.likes.toLocaleString()} likes`
-                : ''}
-            </p>
+            {currentVideo?.views || currentVideo?.likes ? (
+              <div className="mt-6 flex items-center gap-6">
+                <span className="text-red-500 text-sm font-bold">
+                  {currentVideo.views
+                    ? `${currentVideo.views.toLocaleString()} views`
+                    : `${currentVideo.likes?.toLocaleString()} likes`}
+                </span>
+
+                <span className="h-px w-12 bg-red-600" />
+              </div>
+            ) : null}
           </div>
 
-          {/* RIGHT CAROUSEL CARD */}
-          <div className="relative h-[300px] w-full overflow-hidden rounded-lg group cursor-pointer"
-               onClick={() => currentVideo && window.open(currentVideo.url, '_blank')}>
+          {/* RIGHT FEATURED VIDEO */}
+          <div
+            onClick={() => currentVideo && window.open(currentVideo.url, '_blank')}
+            className="relative h-[420px] w-full overflow-hidden group cursor-pointer bg-black"
+          >
             {currentVideo ? (
               <>
+                {/* Thumbnail */}
                 <Image
                   src={currentVideo.thumbnail}
                   alt={currentVideo.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-xl font-bold line-clamp-2">
+
+                {/* Dark cinematic overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+
+                {/* Play overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 backdrop-blur-md group-hover:scale-110 transition">
+                    <span className="ml-1 text-3xl">▶</span>
+                  </div>
+                </div>
+
+                {/* Bottom info bar */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-xl font-bold leading-tight line-clamp-2">
                     {currentVideo.title}
                   </h3>
-                  <p className="text-sm text-gray-300 mt-2">
+
+                  <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">
                     {currentVideo.type === 'viewed' ? 'Most Viewed' : 'Latest Video'}
                   </p>
                 </div>
@@ -117,6 +139,7 @@ export default function NewVideoSection() {
             )}
           </div>
         </div>
+
 
         {/* ================= PREVIOUS MATCHES (UNCHANGED) ================= */}
         <div>

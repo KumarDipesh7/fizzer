@@ -6,16 +6,16 @@ export async function GET() {
     const { data, error } = await supabase
       .from('youtube_cache')
       .select('*')
-      .in('key', ['most_viewed', 'most_liked']);
+      .in('key', ['most_viewed', 'most_recent']);
 
     if (error || !data) {
       return NextResponse.json({ most_viewed: null, most_liked: null });
     }
 
     const mostViewed = data.find(d => d.key === 'most_viewed')?.value;
-    const mostLiked = data.find(d => d.key === 'most_liked')?.value;
+    const mostRecent = data.find(d => d.key === 'most_recent')?.value;
 
-    return NextResponse.json({ most_viewed: mostViewed, most_liked: mostLiked });
+    return NextResponse.json({ most_viewed: mostViewed, most_recent: mostRecent });
   } catch (err) {
     console.error('YouTube cache fetch error:', err);
     return NextResponse.json({ error: 'Failed to load videos' }, { status: 500 });
