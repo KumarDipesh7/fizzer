@@ -8,6 +8,11 @@ import {
 } from "react-icons/fa6";
 
 export default function JoinSection() {
+  const socialLinks = [
+    { Icon: FaInstagram, href: "https://www.instagram.com/fizzer_bgmi?igsh=cDM2aDVjdHB2bTcw" },
+    { Icon: FaYoutube, href: "https://www.youtube.com/@OnlyFizZer" },
+    { Icon: FaDiscord, href: "#" },
+  ];
   return (
     <section id="socials" className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -24,16 +29,12 @@ export default function JoinSection() {
 
           {/* Social icons */}
           <div className="flex gap-4 flex-wrap">
-            {[
-              FaInstagram,
-              FaXTwitter,
-              FaTiktok,
-              FaYoutube,
-              FaDiscord,
-            ].map((Icon, idx) => (
+            {socialLinks.map(({ Icon, href }, idx) => (
               <a
                 key={idx}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-16 w-16 items-center justify-center bg-white text-black hover:bg-black hover:text-white transition"
               >
                 <Icon size={24} />

@@ -12,7 +12,7 @@ export default function MerchSection() {
           <div className="relative h-[420px] lg:h-[520px]">
             <Image
               src="/merch.jpg"
-              alt="FasterUI Merch"
+              alt="Fizzer Merch"
               fill
               className="object-cover"
               priority

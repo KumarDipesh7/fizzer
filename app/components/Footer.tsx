@@ -10,6 +10,11 @@ import { Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
+  const socialLinks = [
+    { Icon: FaInstagram, href: "https://www.instagram.com/fizzer_bgmi?igsh=cDM2aDVjdHB2bTcw" },
+    { Icon: FaYoutube, href: "https://www.youtube.com/@OnlyFizZer" },
+    { Icon: FaDiscord, href: "#" },
+  ];
   return (
     <footer className="w-full bg-black text-white">
       <div className="flex flex-col items-center px-6 py-20">
@@ -24,11 +29,17 @@ export default function Footer() {
 
         {/* SOCIAL ICONS */}
         <div className="mb-10 flex gap-6 text-white/80">
-          <FaInstagram />
-          <FaXTwitter />
-          <FaTiktok />
-          <FaYoutube />
-          <FaDiscord />
+          {socialLinks.map(({ Icon, href }, idx) => (
+            <a
+              key={idx}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-500 transition"
+            >
+              <Icon size={24} />
+            </a>
+          ))}
         </div>
 
         {/* DIVIDER */}

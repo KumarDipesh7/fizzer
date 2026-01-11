@@ -90,7 +90,6 @@ export default function NewVideoSection() {
                     ? `${currentVideo.views.toLocaleString()} views`
                     : `${currentVideo.likes?.toLocaleString()} likes`}
                 </span>
-
                 <span className="h-px w-12 bg-red-600" />
               </div>
             ) : null}
