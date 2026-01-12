@@ -1,13 +1,20 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-const BOOKING_URL = "https://YOUR-THIRD-PARTY-LINK-HERE";
+const FINGER_OPTIONS = [
+  { label: "2 Finger Style", url: "https://superprofile.bio/ps/69649d044d4d110013c52906" },
+  { label: "3 Finger Style", url: "https://superprofile.bio/ps/69649d854d4d110013c54b28" },
+  { label: "4 Finger Style", url: "https://superprofile.bio/ps/69649dce4d4d110013c55ae9" },
+];
+
 
 export default function ControlLayoutPage() {
   const [showTerms, setShowTerms] = useState(false);
   const [accepted, setAccepted] = useState(false);
+  const [selectedFinger, setSelectedFinger] = useState("");
 
   const closeModal = () => {
     setShowTerms(false);
@@ -16,6 +23,12 @@ export default function ControlLayoutPage() {
 
   return (
     <section className="bg-black text-white min-h-screen">
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border border-white/20 hover:border-red-500 hover:text-red-500 transition rounded-full"
+      >
+        ← Back
+      </Link>
 
       {/* HERO */}
       <div className="relative h-[60vh]">
@@ -99,19 +112,62 @@ export default function ControlLayoutPage() {
         {/* RIGHT — CTA CARD */}
         <div className="bg-[#111] p-12 md:p-14 lg:p-16 flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-extrabold uppercase mb-4">
+            <h3 className="text-2xl font-extrabold uppercase mb-2">
               Buy Control Layout Pack
             </h3>
-            <p className="text-gray-300 mb-8">
-              This is a device-ready control layout pack.
-              Not a personalized layout creation service.
+
+            <p className="text-gray-400 mb-6">
+              Choose your finger style and get your ready-to-use layout.
             </p>
+
+            {/* Finger Selector */}
+            <div className="mb-8">
+              <label className="block mb-2 text-xs uppercase tracking-widest text-gray-400">
+                Select Finger Style
+              </label>
+
+              <div className="relative">
+                <select
+                  value={selectedFinger}
+                  onChange={(e) => setSelectedFinger(e.target.value)}
+                  className="w-full appearance-none bg-black border border-white/20 px-4 py-3 pr-10 text-white focus:border-red-500 outline-none rounded-md"
+                >
+                  <option value="">Choose your layout</option>
+                  {FINGER_OPTIONS.map((f) => (
+                    <option key={f.url} value={f.url}>
+                      {f.label}
+                    </option>
+                  ))}
+                </select>
+
+                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  ▼
+                </span>
+              </div>
+
+              {/* Price */}
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs uppercase tracking-widest text-gray-400">
+                  Price
+                </span>
+                <span className="text-3xl font-extrabold text-red-500">
+                  ₹249
+                </span>
+              </div>
+            </div>
           </div>
 
           <button
-            onClick={() => setShowTerms(true)}
-            className="w-full bg-red-600 py-4 text-sm font-bold uppercase hover:bg-red-700 transition"
+            onClick={() => selectedFinger && setShowTerms(true)}
+            disabled={!selectedFinger}
+            className={`w-full py-4 text-sm font-bold uppercase transition
+              ${
+                selectedFinger
+                  ? "bg-red-600 hover:bg-red-700"
+                  : "bg-red-600/40 cursor-not-allowed"
+              }`}
           >
+
             Continue to Purchase
           </button>
         </div>
@@ -174,7 +230,7 @@ export default function ControlLayoutPage() {
               </button>
 
               <a
-                href={BOOKING_URL}
+                href={selectedFinger}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`px-6 py-3 text-sm font-bold uppercase rounded-md text-center transition

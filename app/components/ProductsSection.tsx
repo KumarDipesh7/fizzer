@@ -5,31 +5,31 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const products = [
   {
-    image: "/news-1.jpg",
+    image: "/oneToone.jpg",
     title: "One to One Sessions",
     description: "A focused 1-on-1 session where you and I connect directly to clear your doubts on BGMI setup, gameplay, Instagram growth, and YouTube content strategy — based on what you actually need.",
     href: "/products/one-to-one"
   },
   {
-    image: "/news-2.jpg",
+    image: "/sensitivity.jpg",
     title: "Sensitivity",
     description: "Accurate, device-specific BGMI sensitivity setups — tested, refined, and trusted by many players & creators for consistent performance. Include Drills and Guides.",
-    href: "/products/sensitivity"
+    href: "/products/senstivity"
   },
   {
-    image: "/news-3.jpg",
+    image: "/cl.jpg",
     title: "Control Layout",
     description: "Optimized BGMI control layouts designed for faster reactions, cleaner movement, and better control — tested and trusted by real players & creators.",
     href: "/products/control-layout"
   },
   {
-    image: "/news-1.jpg",
+    image: "/thumb.jpg",
     title: "THUMBNAIL PACK",
     description: "A gaming-focused thumbnail asset pack designed to help you create high-quality, eye-catching thumbnails.",
     href: "/products/thumbnail"
   },
   {
-    image: "/news-1.jpg",
+    image: "/videoedit.jpg",
     title: "VIDEO EDITING PACK",
     description: "A gaming-focused video editing asset pack designed to improve the quality, flow, and feel of your videos.",
     href: "/products/video-editing"

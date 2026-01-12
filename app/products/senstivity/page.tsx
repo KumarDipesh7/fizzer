@@ -1,13 +1,25 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-const BOOKING_URL = "https://YOUR-THIRD-PARTY-LINK-HERE";
+const DEVICE_OPTIONS = [
+  { label: "iPhone", url: "https://superprofile.bio/ps/69644efe172da70013b9b253" },
+  { label: "OnePlus", url: "https://superprofile.bio/ps/696454abe6d479001399aaae" },
+  { label: "Samsung", url: "https://superprofile.bio/ps/6964562d172da70013ba8506" },
+  { label: "Infinix", url: "https://superprofile.bio/ps/696456bfe6d479001399f46c" },
+  { label: "Motorola", url: "https://superprofile.bio/ps/69645949172da70013baf4da" },
+  { label: "Nothing", url: "https://superprofile.bio/ps/696459e9172da70013bb0cfd" },
+  { label: "Oppo", url: "https://superprofile.bio/ps/69645b70172da70013bb4b94" },
+  { label: "Realme", url: "https://superprofile.bio/ps/69645bede6d47900139ab6c0" },
+  { label: "Redmi / Poco / Xiaomi", url: "https://superprofile.bio/ps/69645cc538d1870014f9f6be" },
+];
 
 export default function SensitivityPage() {
   const [showTerms, setShowTerms] = useState(false);
   const [accepted, setAccepted] = useState(false);
+  const [selectedDevice, setSelectedDevice] = useState<string>("");
 
   const closeModal = () => {
     setShowTerms(false);
@@ -16,6 +28,12 @@ export default function SensitivityPage() {
 
   return (
     <section className="bg-black text-white min-h-screen">
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border border-white/20 hover:border-red-500 hover:text-red-500 transition rounded-full"
+      >
+        ← Back
+      </Link>
 
       {/* HERO */}
       <div className="relative h-[60vh]">
@@ -96,18 +114,63 @@ export default function SensitivityPage() {
         {/* RIGHT — CTA CARD */}
         <div className="bg-[#111] p-12 md:p-14 lg:p-16 flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-extrabold uppercase mb-4">
+            <h3 className="text-2xl font-extrabold uppercase mb-2">
               Buy Sensitivity Pack
             </h3>
-            <p className="text-gray-300 mb-8">
-              This is a ready-to-use, device-specific sensitivity pack.
-              Not a personalized coaching service.
+
+            <p className="text-gray-400 mb-6">
+              Device-specific ready-to-use sensitivity values.
             </p>
+
+            {/* Device Selector */}
+            <div className="mb-8">
+              <label className="block mb-2 text-xs uppercase tracking-widest text-gray-400">
+                Select Your Device
+              </label>
+
+              <div className="relative">
+                <select
+                  value={selectedDevice}
+                  onChange={(e) => setSelectedDevice(e.target.value)}
+                  className="w-full appearance-none bg-black border border-white/20 px-4 py-3 pr-10 text-white focus:border-red-500 outline-none rounded-md"
+                >
+                  <option value="">Choose your device</option>
+                  {DEVICE_OPTIONS.map((d) => (
+                    <option key={d.url} value={d.url}>
+                      {d.label}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Dropdown arrow */}
+                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  ▼
+                </span>
+              </div>
+
+              {/* Price */}
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs uppercase tracking-widest text-gray-400">
+                  Price
+                </span>
+                <span className="text-3xl font-extrabold text-red-500">
+                  ₹249
+                </span>
+              </div>
+            </div>
+
+
           </div>
 
           <button
-            onClick={() => setShowTerms(true)}
-            className="w-full bg-red-600 py-4 text-sm font-bold uppercase hover:bg-red-700 transition"
+            onClick={() => selectedDevice && setShowTerms(true)}
+            disabled={!selectedDevice}
+            className={`w-full py-4 text-sm font-bold uppercase transition
+              ${
+                selectedDevice
+                  ? "bg-red-600 hover:bg-red-700"
+                  : "bg-red-600/40 cursor-not-allowed"
+              }`}
           >
             Continue to Purchase
           </button>
@@ -171,7 +234,7 @@ export default function SensitivityPage() {
               </button>
 
               <a
-                href={BOOKING_URL}
+                href={selectedDevice}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`px-6 py-3 text-sm font-bold uppercase rounded-md text-center transition

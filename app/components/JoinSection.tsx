@@ -11,7 +11,7 @@ export default function JoinSection() {
   const socialLinks = [
     { Icon: FaInstagram, href: "https://www.instagram.com/fizzer_bgmi?igsh=cDM2aDVjdHB2bTcw" },
     { Icon: FaYoutube, href: "https://www.youtube.com/@OnlyFizZer" },
-    { Icon: FaDiscord, href: "#" },
+    { Icon: FaDiscord, href: "https://discord.gg/P5kqxM8St7" },
   ];
   return (
     <section id="socials" className="w-full">

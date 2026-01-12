@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${myCustomFont.variable} ${myCustomFont.variable} antialiased`}
+        className={`${myCustomFont.variable} antialiased`}
       >
         {children}
       </body>

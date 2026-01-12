@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Zap, Gamepad2, Hand, Plane } from "lucide-react";
 
 type Video = {
   id: string;
@@ -18,11 +17,12 @@ type Video = {
 export default function NewVideoSection() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    fetch('/api/youtube?_=' + Date.now(), {  // Adds timestamp to bust cache
-        cache: 'no-store',
-      })
+    fetch('/api/youtube?_=' + Date.now(), {
+      cache: 'no-store',
+    })
       .then(res => res.json())
       .then(data => {
         const loadedVideos: Video[] = [];
@@ -52,13 +52,33 @@ export default function NewVideoSection() {
     if (videos.length <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % videos.length);
+      setIsTransitioning(true);
+      
+      setTimeout(() => {
+        setCurrentIndex(prev => (prev + 1) % videos.length);
+        setIsTransitioning(false);
+      }, 300); // Half of the transition duration
     }, 6000);
 
     return () => clearInterval(interval);
   }, [videos.length]);
 
   const currentVideo = videos[currentIndex] || null;
+
+  // Advertisement images (replace with your actual image paths)
+  const adImages = [
+    '/testimonials/testimonial1.jpg',
+    '/testimonials/testimonial2.jpg',
+    '/testimonials/testimonial3.jpg',
+    '/testimonials/testimonial4.jpg',
+    '/testimonials/testimonial5.jpg',
+    '/testimonials/testimonial6.jpg',
+    '/testimonials/testimonial7.jpg',
+    '/testimonials/testimonial8.jpg',
+  ];
+
+  // Duplicate the array for seamless loop
+  const duplicatedtestimonials = [...adImages, ...adImages];
 
   return (
     <section id="vid" className="bg-black py-28 text-white">
@@ -68,7 +88,7 @@ export default function NewVideoSection() {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] items-center mb-20 md:mb-28 gap-10 md:gap-16">
 
           {/* LEFT INFO */}
-          <div>
+          <div className={`transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
             <p className="mb-3 text-xs uppercase tracking-widest text-red-500">
               {currentVideo?.type === 'viewed' ? 'Most Viewed Video' : 'Latest Upload'}
             </p>
@@ -102,7 +122,7 @@ export default function NewVideoSection() {
           >
 
             {currentVideo ? (
-              <>
+              <div className={`absolute inset-0 transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
                 {/* Thumbnail */}
                 <Image
                   src={currentVideo.thumbnail}
@@ -131,7 +151,7 @@ export default function NewVideoSection() {
                     {currentVideo.type === 'viewed' ? 'Most Viewed' : 'Latest Video'}
                   </p>
                 </div>
-              </>
+              </div>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
                 <p className="text-gray-400">Loading top video...</p>
@@ -141,85 +161,64 @@ export default function NewVideoSection() {
         </div>
 
 
-        {/* ================= PREVIOUS MATCHES (UNCHANGED) ================= */}
+        {/* ================= SPONSORS MARQUEE ================= */}
         <div>
           <h3 className="mb-6 text-xl font-extrabold uppercase">
-            Previous 3 Matches
+            Our Sponsors
           </h3>
 
-          <div className="h-px w-full bg-white/10 mb-2" />
+          <div className="h-px w-full bg-white/10 mb-8" />
 
-          <div className="space-y-1 overflow-x-auto md:overflow-visible">
-            <MatchRow
-              result="L"
-              date="Ended – Feb 14, 18:43"
-              event="ShadowStrike Invitational"
-              left={<Zap size={18} />}
-              score="0 - 2"
-              right={<Plane size={18} />}
-            />
+          {/* Marquee Container */}
+          <div className="relative overflow-hidden py-4">
 
-            <MatchRow
-              result="W"
-              date="Ended – Feb 13, 17:14"
-              event="ShadowStrike Invitational"
-              left={<Hand size={18} />}
-              score="0 - 1"
-              right={<Zap size={18} />}
-            />
+            <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 md:w-48 z-10 pointer-events-none bg-gradient-to-r from-black via-black/80 to-transparent backdrop-blur-sm" />
+            <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 md:w-48 z-10 pointer-events-none bg-gradient-to-l from-black via-black/80 to-transparent backdrop-blur-sm" />
 
-            <MatchRow
-              result="W"
-              date="Ended – Feb 13, 13:51"
-              event="ShadowStrike Invitational"
-              left={<Zap size={18} />}
-              score="2 - 0"
-              right={<span className="text-lg">🍪</span>}
-            />
+            {/* Scrolling Content */}
+            <div className="flex gap-6 marquee-scroll group">
+              {duplicatedtestimonials.map((imgSrc, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[320px] sm:w-[360px] md:w-[420px] h-[200px] sm:h-[220px] md:h-[260px] relative overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src={imgSrc}
+                    alt={`Sponsor ${(index % adImages.length) + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
       </div>
-    </section>
-  );
-}
 
-/* ================= MATCH ROW (UNCHANGED) ================= */
-function MatchRow({
-  result,
-  date,
-  event,
-  left,
-  score,
-  right,
-}: {
-  result: "W" | "L";
-  date: string;
-  event: string;
-  left: React.ReactNode;
-  score: string;
-  right: React.ReactNode;
-}) {
-  return (
-    <div className="min-w-[700px] md:min-w-0 grid grid-cols-[40px_220px_1fr_160px_80px_160px] items-center py-4 text-sm border-b border-white/10">
-      <span className={`font-extrabold ${result === "W" ? "text-white" : "text-gray-500"}`}>
-        {result}
-      </span>
-      <span className="text-gray-400">{date}</span>
-      <span className="text-gray-300">{event}</span>
-      <div className="flex items-center gap-2">
-        <span className="flex h-8 w-8 items-center justify-center bg-red-600">
-          {left}
-        </span>
-        <span>FasterUI</span>
-      </div>
-      <span className="text-center">{score}</span>
-      <div className="flex items-center gap-2 justify-end">
-        <span>Opponent</span>
-        <span className="flex h-8 w-8 items-center justify-center bg-white text-black">
-          {right}
-        </span>
-      </div>
-    </div>
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .marquee-scroll {
+          animation: marquee 35s linear infinite;
+        }
+
+        @media (min-width: 768px) {
+          .marquee-scroll {
+            animation: marquee 35s linear infinite;
+          }
+        }
+
+        .marquee-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </section>
   );
 }

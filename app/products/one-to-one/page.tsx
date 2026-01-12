@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const BOOKING_URL = "https://YOUR-THIRD-PARTY-LINK-HERE";
+const BOOKING_URL = "https://superprofile.bio/bookings/fizzerbgmi?sessionId=6963bb2e4efb7c001323bede";
 
 export default function OneToOnePage() {
   const [showTerms, setShowTerms] = useState(false);
@@ -18,6 +18,12 @@ export default function OneToOnePage() {
 
   return (
     <section className="bg-black text-white min-h-screen">
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border border-white/20 hover:border-red-500 hover:text-red-500 transition rounded-full"
+      >
+        ← Back
+      </Link>
 
       {/* HERO */}
       <div className="relative h-[60vh]">
@@ -78,15 +84,25 @@ export default function OneToOnePage() {
         {/* RIGHT — BOOKING CARD */}
         <div className="bg-[#111] p-12 md:p-14 lg:p-16 flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-extrabold uppercase mb-4">
+            <h3 className="text-2xl font-extrabold uppercase mb-2">
               Book Your Session
             </h3>
 
-            <p className="text-gray-300 mb-8">
-              This is a private one-to-one guidance session.
-              Slots are limited and reserved exclusively for you.
+            <p className="text-gray-400 mb-6">
+              A private one-to-one guidance session focused on gameplay & content growth.
             </p>
+
+            {/* Price */}
+            <div className="flex items-center justify-between mb-10">
+              <span className="text-xs uppercase tracking-widest text-gray-400">
+                Session Price
+              </span>
+              <span className="text-3xl font-extrabold text-red-500">
+                ₹849
+              </span>
+            </div>
           </div>
+
 
           {/* CTA BUTTON */}
           <button
