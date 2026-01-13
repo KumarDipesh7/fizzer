@@ -14,6 +14,7 @@ const DEVICE_OPTIONS = [
   { label: "Oppo", url: "https://superprofile.bio/ps/69645b70172da70013bb4b94" },
   { label: "Realme", url: "https://superprofile.bio/ps/69645bede6d47900139ab6c0" },
   { label: "Redmi / Poco / Xiaomi", url: "https://superprofile.bio/ps/69645cc538d1870014f9f6be" },
+  { label: "IQOO / VIVO", url: "https://superprofile.bio/ps/696458b4e6d47900139a35cb" },
 ];
 
 export default function SensitivityPage() {

@@ -8,31 +8,36 @@ const products = [
     image: "/oneToone.jpg",
     title: "One to One Sessions",
     description: "A focused 1-on-1 session where you and I connect directly to clear your doubts on BGMI setup, gameplay, Instagram growth, and YouTube content strategy — based on what you actually need.",
-    href: "/products/one-to-one"
+    href: "/products/one-to-one",
+    price: 849,
   },
   {
     image: "/sensitivity.jpg",
     title: "Sensitivity",
     description: "Accurate, device-specific BGMI sensitivity setups — tested, refined, and trusted by many players & creators for consistent performance. Include Drills and Guides.",
-    href: "/products/senstivity"
+    href: "/products/senstivity",
+    price: 249,
   },
   {
     image: "/cl.jpg",
     title: "Control Layout",
     description: "Optimized BGMI control layouts designed for faster reactions, cleaner movement, and better control — tested and trusted by real players & creators.",
-    href: "/products/control-layout"
+    href: "/products/control-layout",
+    price: 249,
   },
   {
     image: "/thumb.jpg",
     title: "THUMBNAIL PACK",
     description: "A gaming-focused thumbnail asset pack designed to help you create high-quality, eye-catching thumbnails.",
-    href: "/products/thumbnail"
+    href: "/products/thumbnail",
+    price: 349,
   },
   {
     image: "/videoedit.jpg",
     title: "VIDEO EDITING PACK",
     description: "A gaming-focused video editing asset pack designed to improve the quality, flow, and feel of your videos.",
-    href: "/products/video-editing"
+    href: "/products/video-editing",
+    price: 449,
   }
 ];
 
@@ -189,7 +194,7 @@ export default function ProductsSection() {
                       href={product.href}
                       className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
                     >
-                      Get Now <span>›</span>
+                      Get Now for {product.price}<span>›</span>
                     </a>
                   </div>
                 </div>

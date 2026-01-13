@@ -6,8 +6,8 @@ import {
   FaDiscord,
   FaHeart,
 } from "react-icons/fa6";
-import { Zap } from "lucide-react";
-import Link from "next/link";
+import { IoGameController } from "react-icons/io5";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   const socialLinks = [
@@ -22,7 +22,7 @@ export default function Footer() {
         {/* LOGO */}
         <div className="mb-8 flex items-center gap-3 text-2xl font-bold">
           <span className="flex h-10 w-10 items-center justify-center rounded bg-white text-black">
-            <Zap size={20} />
+            <IoGameController size={20} />
           </span>
           FizZer
         </div>
@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="my-10 h-px w-full max-w-5xl bg-white/10" />
 
         {/* NAV LINKS */}
-        <nav className="mb-10 flex flex-wrap justify-center gap-10 text-sm font-extrabold uppercase tracking-wide">
+        {/* <nav className="mb-10 flex flex-wrap justify-center gap-10 text-sm font-extrabold uppercase tracking-wide">
           {[
             "Home",
             "News",
@@ -63,7 +63,20 @@ export default function Footer() {
               {item}
             </Link>
           ))}
-        </nav>
+        </nav> */}
+
+        <div className="mb-10 flex flex-col items-center gap-4">
+          <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
+            Contact Us
+          </p>
+          <a
+            href="mailto:contactsuppfizzer@gmail.com"
+            className="flex items-center gap-3 text-lg font-semibold hover:text-red-500 transition group"
+          >
+            <Mail size={20} className="group-hover:scale-110 transition" />
+            contactsuppfizzer@gmail.com
+          </a>
+        </div>
 
         {/* DIVIDER */}
         <div className="my-10 h-px w-full max-w-5xl bg-white/10" />
