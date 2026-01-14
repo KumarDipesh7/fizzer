@@ -67,13 +67,13 @@ export default function Intro() {
             <p className="text-sm font-bold uppercase tracking-widest text-gray-400">
               Welcome
             </p>
-            <h2 className="mt-3 text-3xl font-extrabold uppercase leading-tight">
+            {/* <h2 className="mt-3 text-3xl font-extrabold uppercase leading-tight">
               Swagat Hai Aapka
               <br />
               <span className="text-red-500">FizZer</span>
               <br />
               Ki Duniya Mein
-            </h2>
+            </h2> */}
             <p className="mt-4 text-gray-300 text-sm leading-relaxed">
               A space built for gamers and creators who want clarity, consistency, and real growth.
             </p>
@@ -136,9 +136,6 @@ export default function Intro() {
             {/* LEFT TOP — TEXT (50% of left column) */}
             <div className="bg-black p-6 md:p-10 flex items-center justify-center h-[300px] md:h-[350px]">
               <p className="text-white text-sm md:text-base lg:text-lg font-extrabold uppercase leading-relaxed tracking-wider">
-                Swagat hai aapka<br />
-                fizzer<br />
-                ki duniya me :-<br />
                 A space built for<br />
                 gamers and creators<br />
                 who want clarity, <br />
@@ -153,7 +150,7 @@ export default function Intro() {
               <span className="mt-1 text-xs md:text-sm font-bold uppercase tracking-widest text-center px-4">
                 PLAYERS & CREATORS GUIDED
               </span>
-          dipes  </div>
+            </div>
           </div>
 
           {/* CENTER — IMAGE (DOMINANT) */}

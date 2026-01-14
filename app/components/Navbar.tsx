@@ -25,7 +25,6 @@ export default function Navbar() {
             <nav className="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wide text-white">
               <Link href="#" className="text-red-400 hover:text-red-300 transition">Home</Link>
               <Link href="#products" className="hover:text-red-400 transition">Products</Link>
-              <Link href="#intro" className="hover:text-red-400 transition">About</Link>
               <Link href="#vid" className="hover:text-red-400 transition">Top Videos</Link>
               <Link href="#socials" className="hover:text-red-400 transition">Socials</Link>
               <Link href="https://www.youtube.com/@OnlyFizZer" className="hover:text-red-400 transition">YouTube</Link>
@@ -33,7 +32,7 @@ export default function Navbar() {
 
             {/* Desktop Shop */}
             <Link
-              href="#"
+              href="#merch"
               className="hidden md:inline-block backdrop-blur-md bg-white/20 border border-white/30 px-5 py-2 text-sm font-semibold text-white rounded-lg hover:bg-white/30 hover:border-white/40 transition"
             >
               SHOP
@@ -67,7 +66,7 @@ export default function Navbar() {
 
               <Link
                 onClick={() => setOpen(false)}
-                href="#"
+                href="#merch"
                 className="mt-4 backdrop-blur-md bg-white/20 border border-white/30 px-6 py-3 rounded-lg hover:bg-white/30 hover:border-white/40 transition"
               >
                 Shop

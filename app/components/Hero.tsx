@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import Link from "next/link";
 
 export default function Hero() {
   const [animate, setAnimate] = useState(false);
@@ -63,9 +64,9 @@ export default function Hero() {
           </h1>
 
           {/* CTA */}
-          <button className="mt-8 sm:mt-10 bg-red-600 px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition">
-            Explore More
-          </button>
+          <Link href="#intro" className="mt-8 sm:mt-10 bg-red-600 px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition">
+            About Me
+          </Link>
         </div>
 
       </div>

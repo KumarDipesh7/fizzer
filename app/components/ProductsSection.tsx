@@ -235,7 +235,7 @@ export default function ProductsSection() {
                   href={product.href}
                   className="inline-block bg-red-600 px-5 py-3 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
                 >
-                  Get Now
+                  Get Now for {product.price}<span>›</span>
                 </a>
               </div>
             </div>
