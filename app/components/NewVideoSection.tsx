@@ -53,7 +53,7 @@ export default function NewVideoSection() {
 
     const interval = setInterval(() => {
       setIsTransitioning(true);
-      
+
       setTimeout(() => {
         setCurrentIndex(prev => (prev + 1) % videos.length);
         setIsTransitioning(false);
@@ -164,7 +164,7 @@ export default function NewVideoSection() {
         {/* ================= SPONSORS MARQUEE ================= */}
         <div>
           <h3 className="mb-6 text-xl font-extrabold uppercase">
-            Our Sponsors
+            Reviews & Testimonials
           </h3>
 
           <div className="h-px w-full bg-white/10 mb-8" />
