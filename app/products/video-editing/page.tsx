@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const BOOKING_URL = "https://YOUR-THIRD-PARTY-LINK-HERE";
+const BOOKING_URL = "https://superprofile.bio/ps/696de35a5c783e0013345ee6";
 
 export default function VideoEditingPackPage() {
   const [showTerms, setShowTerms] = useState(false);

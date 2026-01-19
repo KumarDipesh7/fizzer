@@ -8,6 +8,8 @@ const FINGER_OPTIONS = [
   { label: "2 Finger Style", url: "https://superprofile.bio/ps/69649d044d4d110013c52906" },
   { label: "3 Finger Style", url: "https://superprofile.bio/ps/69649d854d4d110013c54b28" },
   { label: "4 Finger Style", url: "https://superprofile.bio/ps/69649dce4d4d110013c55ae9" },
+  { label: "5 Finger Style", url: "https://superprofile.bio/ps/696de5ab5c783e001334d456" },
+  { label: "6 Finger Style", url: "https://superprofile.bio/ps/696de08236ea0000133be8a7" },
 ];
 
 
