@@ -52,8 +52,8 @@ function useCountUp(target: number, duration = 2200) {
 
 
 export default function Intro() {
-  const subs = useCountUp(90);
-  const views = useCountUp(8);
+  const subs = useCountUp(100);
+  const views = useCountUp(9);
 
 
   return (
