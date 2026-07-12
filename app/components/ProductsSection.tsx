@@ -1,267 +1,246 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from "next/link";
+import { Check } from "lucide-react";
 
 const products = [
   {
-    image: "/oneToone.jpg",
-    title: "One to One Sessions",
-    description: "A focused 1-on-1 session where you and I connect directly to clear your doubts on BGMI setup, gameplay, Instagram growth, and YouTube content strategy — based on what you actually need.",
-    href: "/products/one-to-one",
-    price: 849,
-  },
-  {
-    image: "/sensitivity.jpg",
-    title: "Sensitivity",
-    description: "Accurate, device-specific BGMI sensitivity setups — tested, refined, and trusted by many players & creators for consistent performance. Include Drills and Guides.",
-    href: "/products/senstivity",
+    category: "Sensitivity",
+    title: "STOP GUESSING YOUR SENSITIVITY",
+    description:
+      "Get the exact sensitivity code tested for your specific device — not a generic template. Includes drills to make it feel natural within 3 days.",
+    features: [
+      "Device-specific code",
+      "Practice drill guide",
+      "Direct support if it doesn't feel right",
+    ],
     price: 249,
+    button: "Get Now",
+    note: "Instant delivery after payment",
+    href: "/products/sensitivity",
   },
+
   {
-    image: "/cl.jpg",
-    title: "Control Layout",
-    description: "Optimized BGMI control layouts designed for faster reactions, cleaner movement, and better control — tested and trusted by real players & creators.",
+    category: "Control Layout",
+    title: "FASTER REACTIONS, CLEANER MOVEMENT",
+    description:
+      'A control layout designed around real fight scenarios — not just "more buttons." Built for faster peeks, cleaner rotations, less thumb fatigue.',
+    features: [
+      "Layout file",
+      "Setup walkthrough",
+      "Tested across multiple screen sizes",
+    ],
+    price: 249,
+    button: "Get Now",
+    note: "Works on most Android/iOS screens",
     href: "/products/control-layout",
-    price: 249,
   },
+
   {
-    image: "/thumb.jpg",
-    title: "THUMBNAIL PACK",
-    description: "A gaming-focused thumbnail asset pack designed to help you create high-quality, eye-catching thumbnails.",
-    href: "/products/thumbnail",
+    category: "Thumbnails",
+    title: "THUMBNAILS THAT ACTUALLY GET CLICKS",
+    description:
+      "A gaming-focused thumbnail asset pack — templates, fonts, and elements used in my own high-performing videos.",
+    features: [
+      "Editable templates",
+      "Font & element pack",
+      "Quick-start guide",
+    ],
     price: 349,
+    button: "Get Now",
+    note: "Compatible with Photoshop & Canva",
+    href: "/products/thumbnail",
   },
+
   {
-    image: "/videoedit.jpg",
-    title: "VIDEO EDITING PACK",
-    description: "A gaming-focused video editing asset pack designed to improve the quality, flow, and feel of your videos.",
-    href: "/products/video-editing",
+    category: "Editing",
+    title: "GIVE YOUR VIDEOS A PROFESSIONAL EDGE",
+    description:
+      "Transitions, SFX, and overlay assets used in my own gameplay and story content — built for BGMI-style fast cuts.",
+    features: [
+      "Transition pack",
+      "SFX library",
+      "Overlay assets",
+    ],
     price: 449,
-  }
+    button: "Get Now",
+    note: "Compatible with CapCut & Premiere Pro",
+    href: "/products/video-editing",
+  },
+
+  {
+    category: "1-on-1",
+    title: "GET YOUR DOUBTS CLEARED, DIRECTLY BY ME",
+    description:
+      "A focused 1-on-1 call to work through your specific BGMI setup, gameplay habits, or content growth questions — tailored to you.",
+    features: [
+      "30–45 min direct call",
+      "Personalized action plan",
+    ],
+    price: 849,
+    button: "Book Now",
+    note: "Limited slots per week",
+    href: "/products/one-to-one",
+  },
 ];
 
-export default function ProductsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-
-  const handlePrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex((prev) => (prev - 1 + products.length) % products.length);
-    setTimeout(() => setIsAnimating(false), 600);
-  };
-
-  const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex((prev) => (prev + 1) % products.length);
-    setTimeout(() => setIsAnimating(false), 600);
-  };
-
-  const getCardStyle = (index: number) => {
-    const diff = (index - activeIndex + products.length) % products.length;
-    const totalCards = products.length;
-    
-    if (diff === 0) {
-      // Active card - center
-      return {
-        transform: 'translateX(0%) rotateY(0deg) scale(1)',
-        opacity: 1,
-        zIndex: 30,
-        filter: 'brightness(1)'
-      };
-    } else if (diff === 1 || diff === -totalCards + 1) {
-      // Right card
-      return {
-        transform: 'translateX(80%) rotateY(-35deg) scale(0.85)',
-        opacity: 0.7,
-        zIndex: 20,
-        filter: 'brightness(0.7)'
-      };
-    } else if (diff === totalCards - 1 || diff === -1) {
-      // Left card
-      return {
-        transform: 'translateX(-80%) rotateY(35deg) scale(0.85)',
-        opacity: 0.7,
-        zIndex: 20,
-        filter: 'brightness(0.7)'
-      };
-    } else if (diff === 2 || diff === -totalCards + 2) {
-      // Far right
-      return {
-        transform: 'translateX(140%) rotateY(-45deg) scale(0.7)',
-        opacity: 0.4,
-        zIndex: 10,
-        filter: 'brightness(0.5)'
-      };
-    } else {
-      // Hidden
-      return {
-        transform: 'translateX(-140%) rotateY(45deg) scale(0.7)',
-        opacity: 0.4,
-        zIndex: 10,
-        filter: 'brightness(0.5)'
-      };
-    }
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isAnimating) {
-        setIsAnimating(true);
-        setActiveIndex((prev) => (prev + 1) % products.length);
-
-        setTimeout(() => {
-          setIsAnimating(false);
-        }, 600); // must match your animation duration
-      }
-    }, 4000); // ⬅️ change speed here (4s = slow & premium)
-
-    return () => clearInterval(interval);
-  }, [isAnimating]);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const cardWidth = slider.children[0]?.clientWidth || 0;
-    const gap = 24; // gap-6 = 1.5rem = 24px
-
-    slider.scrollTo({
-      left: (cardWidth + gap) * activeIndex,
-      behavior: "smooth",
-    });
-  }, [activeIndex]);
-
-
+function ProductCard({
+  product,
+}: {
+  product: (typeof products)[0];
+}) {
   return (
-    <section id="products" className="bg-[#f4f4f4] py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mb-14 flex items-center justify-between">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-black">
-            Our Products
-          </h2>
+    <div className="flex flex-col border border-white/10 bg-[#0b0909]">
+      <div className="flex flex-1 flex-col p-9">
+        {/* Category */}
+        <span className="mb-6 text-xs uppercase tracking-[0.35em] text-red-500">
+          {product.category}
+        </span>
 
-          <div className="hidden md:flex gap-3">
-            <button 
-              onClick={handlePrev}
-              disabled={isAnimating}
-              className="flex h-14 w-14 items-center justify-center bg-red-600 text-white hover:bg-red-700 transition disabled:opacity-50"
+        {/* Title */}
+        <h3 className="font-black uppercase leading-none text-[34px]">
+          {product.title}
+        </h3>
+
+        {/* Description */}
+        <p className="mt-6 text-[17px] leading-9 text-gray-300">
+          {product.description}
+        </p>
+
+        {/* Features */}
+        <ul className="mt-10 space-y-3">
+          {product.features.map((feature) => (
+            <li
+              key={feature}
+              className="flex items-start gap-3 text-lg text-gray-400"
             >
-              <ChevronLeft />
-            </button>
-            <button 
-              onClick={handleNext}
-              disabled={isAnimating}
-              className="flex h-14 w-14 items-center justify-center bg-red-600 text-white hover:bg-red-700 transition disabled:opacity-50"
-            >
-              <ChevronRight />
-            </button>
-          </div>
-        </div>
+              <Check
+                size={18}
+                className="mt-1 shrink-0 text-red-500"
+              />
 
-        {/* 3D Carousel Container */}
-        <div className="relative hidden md:block h-[650px] overflow-hidden" style={{ perspective: '2000px' }}>
-          <div className="absolute inset-0 flex items-center justify-center">
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className="absolute w-full max-w-md transition-all duration-700 ease-out"
-                style={{
-                  ...getCardStyle(index),
-                  transformStyle: 'preserve-3d'
-                }}
-              >
-                <div className="bg-black text-white shadow-2xl overflow-hidden">
-                  {/* Image */}
-                  <div className="relative h-[420px] w-full overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-cover contrast-125"
-                    />
-                  </div>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="mb-3 text-xl font-extrabold uppercase">{product.title}</h3>
-                    <p className="mb-6 text-sm text-gray-300 line-clamp-3">{product.description}</p>
+        <div className="mt-auto pt-12">
+          <div className="mb-7 border-t border-white/10" />
 
-                    <a
-                      href={product.href}
-                      className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
-                    >
-                      Get Now for {product.price}<span>›</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Mobile Slider */}
-        <div
-          ref={sliderRef}
-          className="md:hidden overflow-x-auto flex gap-6 snap-x snap-mandatory pb-6 scroll-smooth"
-        >
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="min-w-[85%] snap-center bg-black text-white shadow-xl rounded-lg overflow-hidden"
-            >
-              {/* Image */}
-              <div className="relative h-[260px] w-full">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <h3 className="text-lg font-extrabold uppercase mb-2">
-                  {product.title}
-                </h3>
-
-                <p className="text-sm text-gray-300 mb-4 line-clamp-3">
-                  {product.description}
-                </p>
-
-                <a
-                  href={product.href}
-                  className="inline-block bg-red-600 px-5 py-3 text-xs font-bold uppercase tracking-wide hover:bg-red-700 transition"
-                >
-                  Get Now for {product.price}<span>›</span>
-                </a>
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-5xl font-black">
+                ₹{product.price}
               </div>
             </div>
-          ))}
+
+            <Link
+              href={product.href}
+              className="bg-red-600 px-8 py-4 font-semibold transition hover:bg-red-700"
+            >
+              {product.button}
+            </Link>
+          </div>
+
+          <p className="mt-5 font-mono text-sm tracking-wide text-gray-500">
+            {product.note}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductsSection() {
+  return (
+    <section
+      id="products"
+      className="relative overflow-hidden bg-[#161212] py-28 text-white"
+    >
+      {/* Background Glow */}
+
+      <div className="absolute inset-0">
+        <div
+          className="absolute -left-40 top-0 h-[700px] w-[700px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(130,20,20,.18), transparent 70%)",
+          }}
+        />
+
+        <div
+          className="absolute right-0 bottom-0 h-[700px] w-[700px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(130,20,20,.12), transparent 70%)",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
+        {/* Header */}
+
+        <div className="mb-20 max-w-3xl">
+          <p className="mb-4 text-xs uppercase tracking-[0.45em] text-red-500">
+            • PRODUCTS
+          </p>
+
+          <h2 className="font-black uppercase leading-none text-5xl md:text-7xl">
+            PICK WHAT FITS YOUR GAME
+          </h2>
+
+          <p className="mt-8 text-xl leading-10 text-gray-300">
+            Every setup below is tested on real gameplay before it reaches
+            you — not recycled templates.
+          </p>
         </div>
 
+        {/* Grid */}
 
-        {/* Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (!isAnimating) {
-                  setIsAnimating(true);
-                  setActiveIndex(index);
-                  setTimeout(() => setIsAnimating(false), 600);
-                }
-              }}
-              className={`h-2 rounded-full transition-all ${
-                index === activeIndex 
-                  ? 'w-8 bg-red-600' 
-                  : 'w-2 bg-gray-400 hover:bg-gray-600'
-              }`}
+        <div className="grid gap-0 border border-white/10 lg:grid-cols-3">
+          {products.slice(0, 3).map((product) => (
+            <ProductCard
+              key={product.title}
+              product={product}
             />
           ))}
+
+          {/* Second Row */}
+
+          {products.slice(3).map((product) => (
+            <ProductCard
+              key={product.title}
+              product={product}
+            />
+          ))}
+
+          {/* Results Card */}
+
+          <div className="flex flex-col border border-white/10 bg-[#161212] p-9">
+            <span className="mb-6 text-xs uppercase tracking-[0.35em] text-red-500">
+              Results
+            </span>
+
+            <h3 className="font-black uppercase leading-none text-[34px]">
+              500+ PLAYERS ALREADY USING THESE SETUPS
+            </h3>
+
+            <p className="mt-6 text-[17px] leading-9 text-gray-300">
+              Every product is built from what's actually tested in real
+              matches — not theory. Scroll down for real results from
+              real buyers.
+            </p>
+
+            <div className="mt-auto pt-16">
+              <Link
+                href="#testimonials"
+                className="inline-flex items-center gap-2 text-2xl font-semibold underline underline-offset-8 transition hover:text-red-500"
+              >
+                See what players say
+                <span className="text-3xl">↓</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

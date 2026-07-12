@@ -28,7 +28,18 @@ export default function SensitivityPage() {
   };
 
   return (
-    <section className="bg-black text-white min-h-screen">
+    <section className="relative bg-[#0b0909] text-white min-h-screen overflow-hidden">
+      {/* Background gradient — matches home page */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[#0b0909]" />
+        <div
+          className="absolute right-0 top-0 h-full w-1/2"
+          style={{
+            background:
+              "radial-gradient(circle at top right, rgba(180,20,35,0.25), transparent 70%)",
+          }}
+        />
+      </div>
       <Link
         href="/"
         className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border border-white/20 hover:border-red-500 hover:text-red-500 transition rounded-full"
@@ -37,7 +48,7 @@ export default function SensitivityPage() {
       </Link>
 
       {/* HERO */}
-      <div className="relative h-[60vh]">
+      <div className="relative z-10 h-[60vh]">
         <Image
           src="/hero-bg.jpg"
           alt="Sensitivity Settings"
@@ -61,7 +72,7 @@ export default function SensitivityPage() {
       </div>
 
       {/* CONTENT */}
-      <div className="mx-auto max-w-7xl px-6 py-20 grid gap-16 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 grid gap-16 lg:grid-cols-2">
 
         {/* LEFT — WHAT YOU GET */}
         <div>

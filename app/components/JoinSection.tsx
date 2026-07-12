@@ -1,57 +1,147 @@
-import Image from "next/image";
+"use client";
+
 import {
   FaInstagram,
-  FaXTwitter,
-  FaTiktok,
   FaYoutube,
   FaDiscord,
 } from "react-icons/fa6";
 
 export default function JoinSection() {
-  const socialLinks = [
-    { Icon: FaInstagram, href: "https://www.instagram.com/fizzer_bgmi?igsh=cDM2aDVjdHB2bTcw" },
-    { Icon: FaYoutube, href: "https://www.youtube.com/@OnlyFizZer" },
-    { Icon: FaDiscord, href: "https://discord.gg/P5kqxM8St7" },
-  ];
   return (
-    <section id="socials" className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+    <section
+      id="socials"
+      className="relative overflow-hidden border-y border-white/10 bg-[#171313] py-28 text-white"
+    >
+      {/* Background Glow */}
 
-        {/* LEFT — RED PANEL */}
-        <div className="bg-red-600 p-16 flex flex-col justify-center">
-          <h2 className="mb-12 text-6xl font-extrabold uppercase leading-tight text-white">
-            Join
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute left-0 top-0 h-[520px] w-[520px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(170,20,35,.12), transparent 72%)",
+          }}
+        />
+
+        <div
+          className="absolute right-0 bottom-0 h-[520px] w-[520px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(170,20,35,.08), transparent 72%)",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
+
+        <div className="mx-auto max-w-4xl text-center">
+
+          <p className="mb-5 text-xs uppercase tracking-[0.45em] text-red-500">
+            • JOIN THE FAMILY
+          </p>
+
+          <h2 className="font-black uppercase leading-none text-3xl md:text-4xl">
+            LOBBY YA LEGEND —
             <br />
-            FizZer
-            <br />
-            Family
+            CHUNAV AAPKA HAI ⚡
           </h2>
 
-          {/* Social icons */}
-          <div className="flex gap-4 flex-wrap">
-            {socialLinks.map(({ Icon, href }, idx) => (
-              <a
-                key={idx}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-16 w-16 items-center justify-center bg-white text-black hover:bg-black hover:text-white transition"
-              >
-                <Icon size={24} />
-              </a>
-            ))}
-          </div>
+          <p className="mx-auto mt-8 max-w-2xl text-xl text-gray-400">
+            Join 100K+ players getting setups, drills,
+            and BGMI updates first.
+          </p>
+
         </div>
 
-        {/* RIGHT — IMAGE */}
-        <div className="relative min-h-[420px] lg:min-h-[600px]">
-          <Image
-            src="/join-team.jpg"
-            alt="FasterUI Team"
-            fill
-            className="object-cover grayscale"
-            priority
-          />
+        {/* Social Cards */}
+
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
+
+          <a
+            href="https://www.youtube.com/@OnlyFizZer"
+            target="_blank"
+            className="group border border-white/10 bg-[#0d0b0b] p-8 transition hover:border-red-600"
+          >
+            <FaYoutube
+              size={34}
+              className="text-red-500 transition group-hover:scale-110"
+            />
+
+            <h3 className="mt-8 text-2xl font-bold">
+              Main Channel
+            </h3>
+
+            <p className="mt-3 text-gray-400">
+              Tutorials, sensitivity guides,
+              gameplay and educational videos.
+            </p>
+
+            <span className="mt-8 inline-block text-sm uppercase tracking-[0.3em] text-red-500">
+              Subscribe →
+            </span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@OnlyFizZer"
+            target="_blank"
+            className="group border border-white/10 bg-[#0d0b0b] p-8 transition hover:border-red-600"
+          >
+            <FaYoutube
+              size={34}
+              className="text-red-500 transition group-hover:scale-110"
+            />
+
+            <h3 className="mt-8 text-2xl font-bold">
+              FizZer Wipes
+            </h3>
+
+            <p className="mt-3 text-gray-400">
+              Shorts, wipes, highlights and
+              entertaining gameplay moments.
+            </p>
+
+            <span className="mt-8 inline-block text-sm uppercase tracking-[0.3em] text-red-500">
+              Watch →
+            </span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/fizzer_bgmi"
+            target="_blank"
+            className="group border border-white/10 bg-[#0d0b0b] p-8 transition hover:border-red-600"
+          >
+            <FaInstagram
+              size={34}
+              className="text-red-500 transition group-hover:scale-110"
+            />
+
+            <h3 className="mt-8 text-2xl font-bold">
+              Instagram
+            </h3>
+
+            <p className="mt-3 text-gray-400">
+              Daily reels, behind-the-scenes,
+              updates and community posts.
+            </p>
+
+            <span className="mt-8 inline-block text-sm uppercase tracking-[0.3em] text-red-500">
+              Follow →
+            </span>
+          </a>
+
+        </div>
+
+        {/* Discord */}
+
+        <div className="mt-16 flex justify-center">
+          <a
+            href="https://discord.gg/P5kqxM8St7"
+            target="_blank"
+            className="inline-flex items-center gap-3 border border-white/10 px-8 py-4 text-lg transition hover:border-red-600"
+          >
+            <FaDiscord className="text-red-500" />
+            Join our Discord Community
+          </a>
         </div>
 
       </div>

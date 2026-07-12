@@ -2,6 +2,7 @@
 'use client';
 
 import Image from "next/image";
+import { Play } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 type Video = {
@@ -159,10 +160,19 @@ export default function NewVideoSection() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
+                {/* Play button */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 backdrop-blur-md group-hover:scale-110 transition">
-                    <span className="ml-1 text-3xl">▶</span>
-                  </div>
+                  <button
+                    type="button"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="play-btn flex h-[78px] w-[78px] items-center justify-center rounded-full bg-[#dc1428] transition-all duration-200 group-hover:scale-105 group-hover:bg-[#ef1b32]"
+                  >
+                    <Play
+                      className="ml-1 h-7 w-7 fill-white text-white"
+                      strokeWidth={1.5}
+                    />
+                  </button>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -184,6 +194,25 @@ export default function NewVideoSection() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .play-btn {
+          box-shadow: 0 0 0 0 rgba(220, 20, 40, 0.45);
+          animation: pulse 2.2s infinite;
+        }
+
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(220, 20, 40, 0.45);
+          }
+          70% {
+            box-shadow: 0 0 0 22px rgba(220, 20, 40, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(220, 20, 40, 0);
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,103 +1,110 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import Navbar from "./Navbar";
 import Link from "next/link";
 
 export default function Hero() {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    // Trigger animation on mount
-    setAnimate(true);
-  }, []);
-
   return (
-    <section className="relative min-h-screen w-full">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/hero-bg.jpg')", 
-        }}
-      />
+    <section className="relative min-h-screen overflow-hidden bg-[#0b0909] text-white">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[#0b0909]" />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+        <div
+          className="absolute right-0 top-0 h-full w-1/2"
+          style={{
+            background:
+              "radial-gradient(circle at top right, rgba(180,20,35,0.25), transparent 70%)",
+          }}
+        />
+      </div>
 
-      {/* Content */}
       <div className="relative z-10">
         <Navbar />
 
-        <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 sm:px-6 text-center text-white">
+        <div className="mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-20 lg:px-8">
+          <div className="grid w-full gap-20 lg:grid-cols-2">
+            {/* LEFT CONTENT */}
+            <div className="flex flex-col justify-center">
+              <p className="mb-6 text-xs uppercase tracking-[0.4em] text-red-500">
+                Trusted by 100K+ BGMI Players
+              </p>
 
-          {/* Small tagline */}
-          <p className="mb-3 text-[10px] sm:text-xs font-semibold tracking-[0.35em] text-gray-300 uppercase">
-            FizZer Gaming
-          </p>
-
-          <h1 className="font-extrabold leading-[1.1] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-            <span className="uppercase block">Swagat Hai Aapka</span>
-
-            <span className="block text-red-500 mt-1 sm:mt-2 inline-flex">
-              <span>Fi</span>
-              <span className="inline-block overflow-hidden relative w-[0.6em]" style={{ height: '1.2em', verticalAlign: 'baseline' }}>
-                <span className={`absolute top-0 left-0 w-full ${animate ? 'animate-spinSlotUp' : ''}`}>
-                  {['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'].map((letter, i) => (
-                    <span key={i} className="block leading-[1.2]">{letter}</span>
-                  ))}
+              <h1 className="font-black uppercase leading-[0.95] tracking-tight">
+                <span className="block text-5xl md:text-7xl">
+                  Device-Specific
                 </span>
-              </span>
-              <span className="inline-block overflow-hidden relative w-[0.6em]" style={{ height: '1.2em', verticalAlign: 'baseline' }}>
-                <span className={`absolute top-0 left-0 w-full ${animate ? 'animate-spinSlotDown' : ''}`}>
-                  {['Z','Y','X','W','V','U','T','S','R','Q','P','O','N','M','L','K','J','I','H','G','F','E','D','C','B','A','Z'].map((letter, i) => (
-                    <span key={i} className="block leading-[1.2]">{letter}</span>
-                  ))}
+
+                <span className="block text-5xl md:text-7xl">
+                  Setups That
                 </span>
-              </span>
-              <span>er</span>
-            </span>
 
-            <span className="uppercase block text-xl sm:text-2xl md:text-4xl lg:text-5xl mt-2 sm:mt-3 text-gray-200">
-              Ki Duniya Mein
-            </span>
-          </h1>
+                <span className="block text-5xl md:text-7xl">
+                  Actually{" "}
+                  <span className="text-red-500">Win You</span>
+                </span>
 
-          {/* CTA */}
-          <Link href="#intro" className="mt-8 sm:mt-10 bg-red-600 px-8 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wide hover:bg-red-700 transition">
-            About Me
-          </Link>
+                <span className="block text-red-500 text-5xl md:text-7xl">
+                  Fights
+                </span>
+              </h1>
+
+              <p className="mt-8 max-w-xl text-lg leading-9 text-gray-300">
+                Sensitivity, control layouts, and coaching — built from what
+                wins, not guesswork. Trusted by thousands of competitive BGMI
+                players looking to improve their gameplay.
+              </p>
+
+              <div className="mt-12 flex flex-wrap items-center gap-6">
+                <Link
+                  href="#products"
+                  className="bg-red-600 px-8 py-4 text-base font-semibold transition hover:bg-red-700"
+                >
+                  Get My Setup →
+                </Link>
+
+                <Link
+                  href="#watch"
+                  className="text-lg text-gray-300 underline underline-offset-4 hover:text-white"
+                >
+                  ▶ Watch the intro video
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="flex items-center justify-center">
+              <div className="relative h-[620px] w-full max-w-md border border-white/10 bg-[#111]">
+                <div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(135deg, transparent 0px, transparent 22px, rgba(255,255,255,.05) 22px, rgba(255,255,255,.05) 24px)",
+                  }}
+                />
+
+                <div className="flex h-full items-center justify-center text-center">
+                  <div>
+                    <div className="mb-4 text-5xl opacity-40">🖼️</div>
+
+                    <p className="uppercase tracking-[0.3em] text-gray-500">
+                      Your Photo / Gameplay Clip
+                    </p>
+
+                    <p className="mt-1 uppercase tracking-[0.3em] text-gray-500">
+                      Goes Here
+                    </p>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-6 left-6 text-[11px] uppercase tracking-[0.3em] text-gray-400">
+                  FizZer — BGMI Creator // Est. Lobby Legend
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
-
-      <style jsx>{`
-        @keyframes spinSlotUp {
-          0% {
-            transform: translateY(0%);
-          }
-          100% {
-            transform: translateY(-96.15%);
-          }
-        }
-
-        @keyframes spinSlotDown {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(0%);
-          }
-        }
-
-        .animate-spinSlotUp {
-          animation: spinSlotUp 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .animate-spinSlotDown {
-          animation: spinSlotDown 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-      `}</style>
     </section>
   );
 }

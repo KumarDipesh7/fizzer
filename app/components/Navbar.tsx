@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -9,71 +9,149 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 z-20 w-full">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5">
-        <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-lg px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-2 text-white font-bold text-xl">
-              <span className="relative inline-flex h-8 w-8">
-                <Image src={FizzerImg} alt="FizZer logo" fill />
-              </span>
-              FizZer
-            </div>
+    <header className="absolute top-0 left-0 z-50 w-full border-b border-white/10 bg-[#090909]/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src={FizzerImg}
+            alt="FizZer"
+            width={34}
+            height={34}
+            priority
+          />
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wide text-white">
-              <Link href="#" className="text-red-400 hover:text-red-300 transition">Home</Link>
-              <Link href="#products" className="hover:text-red-400 transition">Products</Link>
-              <Link href="#vid" className="hover:text-red-400 transition">Top Videos</Link>
-              <Link href="#socials" className="hover:text-red-400 transition">Socials</Link>
-              <Link href="https://www.youtube.com/@OnlyFizZer" className="hover:text-red-400 transition">YouTube</Link>
-            </nav>
+          <span className="text-3xl font-extrabold tracking-tight text-white">
+            Fiz <span className="text-red-500">Zer</span>
+          </span>
+        </Link>
 
-            {/* Desktop Shop */}
-            <Link
-              href="#merch"
-              className="hidden md:inline-block backdrop-blur-md bg-white/20 border border-white/30 px-5 py-2 text-sm font-semibold text-white rounded-lg hover:bg-white/30 hover:border-white/40 transition"
-            >
-              SHOP
-            </Link>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium text-gray-300">
+          <Link
+            href="/"
+            className="text-white transition hover:text-red-500"
+          >
+            Home
+          </Link>
 
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 relative z-10"
-              aria-label="Toggle menu"
-            >
-              <span className={`h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${open ? "rotate-45 translate-y-[6px]" : ""}`} />
-              <span className={`h-[2px] w-6 bg-white rounded-full my-1 transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-              <span className={`h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${open ? "-rotate-45 -translate-y-[6px]" : ""}`} />
-            </button>
-          </div>
-        </div>
+          <Link
+            href="#products"
+            className="transition hover:text-red-500"
+          >
+            Products
+          </Link>
+
+          <Link
+            href="#vid"
+            className="transition hover:text-red-500"
+          >
+            Watch
+          </Link>
+
+          <Link
+            href="#about"
+            className="transition hover:text-red-500"
+          >
+            About
+          </Link>
+
+          <Link
+            href="#faq"
+            className="transition hover:text-red-500"
+          >
+            FAQ
+          </Link>
+        </nav>
+
+        {/* Desktop CTA */}
+        <Link
+          href="#products"
+          className="hidden md:flex items-center bg-red-600 px-7 py-3 font-semibold text-white transition duration-300 hover:bg-red-700"
+        >
+          Get My Setup
+        </Link>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="relative flex h-10 w-10 flex-col items-center justify-center md:hidden"
+        >
+          <span
+            className={`h-0.5 w-6 bg-white transition-all duration-300 ${
+              open ? "translate-y-1.5 rotate-45" : ""
+            }`}
+          />
+
+          <span
+            className={`my-1 h-0.5 w-6 bg-white transition-all duration-300 ${
+              open ? "opacity-0" : ""
+            }`}
+          />
+
+          <span
+            className={`h-0.5 w-6 bg-white transition-all duration-300 ${
+              open ? "-translate-y-1.5 -rotate-45" : ""
+            }`}
+          />
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${open ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="mx-4 sm:mx-6 mt-3">
-          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-lg">
-            <nav className="flex flex-col items-center py-8 gap-6 text-sm font-bold uppercase tracking-wide text-white">
-              <Link onClick={() => setOpen(false)} href="#" className="text-red-400 hover:text-red-300 transition">Home</Link>
-              <Link onClick={() => setOpen(false)} href="#products" className="hover:text-red-400 transition">Products</Link>
-              <Link onClick={() => setOpen(false)} href="#intro" className="hover:text-red-400 transition">About</Link>
-              <Link onClick={() => setOpen(false)} href="#vid" className="hover:text-red-400 transition">Top Videos</Link>
-              <Link onClick={() => setOpen(false)} href="#socials" className="hover:text-red-400 transition">Socials</Link>
-              <Link onClick={() => setOpen(false)} href="https://www.youtube.com/@OnlyFizZer" className="hover:text-red-400 transition">YouTube</Link>
+      <div
+        className={`overflow-hidden bg-[#090909] transition-all duration-300 md:hidden ${
+          open ? "max-h-[500px]" : "max-h-0"
+        }`}
+      >
+        <nav className="flex flex-col border-t border-white/10 px-6 py-6 text-lg text-gray-300">
+          <Link
+            onClick={() => setOpen(false)}
+            href="/"
+            className="py-3 hover:text-red-500"
+          >
+            Home
+          </Link>
 
-              <Link
-                onClick={() => setOpen(false)}
-                href="#merch"
-                className="mt-4 backdrop-blur-md bg-white/20 border border-white/30 px-6 py-3 rounded-lg hover:bg-white/30 hover:border-white/40 transition"
-              >
-                Shop
-              </Link>
-            </nav>
-          </div>
-        </div>
+          <Link
+            onClick={() => setOpen(false)}
+            href="#products"
+            className="py-3 hover:text-red-500"
+          >
+            Products
+          </Link>
+
+          <Link
+            onClick={() => setOpen(false)}
+            href="#watch"
+            className="py-3 hover:text-red-500"
+          >
+            Watch
+          </Link>
+
+          <Link
+            onClick={() => setOpen(false)}
+            href="#about"
+            className="py-3 hover:text-red-500"
+          >
+            About
+          </Link>
+
+          <Link
+            onClick={() => setOpen(false)}
+            href="#faq"
+            className="py-3 hover:text-red-500"
+          >
+            FAQ
+          </Link>
+
+          <Link
+            onClick={() => setOpen(false)}
+            href="#products"
+            className="mt-5 bg-red-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-red-700"
+          >
+            Get My Setup
+          </Link>
+        </nav>
       </div>
     </header>
   );
