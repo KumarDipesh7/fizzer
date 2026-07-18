@@ -55,7 +55,7 @@ export default function JoinSection() {
 
         {/* Social Cards */}
 
-        <div className="mt-20 grid gap-6 md:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-2">
 
           <a
             href="https://www.youtube.com/@OnlyFizZer"
@@ -68,7 +68,7 @@ export default function JoinSection() {
             />
 
             <h3 className="mt-8 text-2xl font-bold">
-              Main Channel
+              FizZer
             </h3>
 
             <p className="mt-3 text-gray-400">
@@ -78,30 +78,6 @@ export default function JoinSection() {
 
             <span className="mt-8 inline-block text-sm uppercase tracking-[0.3em] text-red-500">
               Subscribe →
-            </span>
-          </a>
-
-          <a
-            href="https://www.youtube.com/@OnlyFizZer"
-            target="_blank"
-            className="group border border-white/10 bg-[#0d0b0b] p-8 transition hover:border-red-600"
-          >
-            <FaYoutube
-              size={34}
-              className="text-red-500 transition group-hover:scale-110"
-            />
-
-            <h3 className="mt-8 text-2xl font-bold">
-              FizZer Wipes
-            </h3>
-
-            <p className="mt-3 text-gray-400">
-              Shorts, wipes, highlights and
-              entertaining gameplay moments.
-            </p>
-
-            <span className="mt-8 inline-block text-sm uppercase tracking-[0.3em] text-red-500">
-              Watch →
             </span>
           </a>
 
@@ -133,7 +109,7 @@ export default function JoinSection() {
 
         {/* Discord */}
 
-        <div className="mt-16 flex justify-center">
+        {/* <div className="mt-16 flex justify-center">
           <a
             href="https://discord.gg/P5kqxM8St7"
             target="_blank"
@@ -142,7 +118,7 @@ export default function JoinSection() {
             <FaDiscord className="text-red-500" />
             Join our Discord Community
           </a>
-        </div>
+        </div> */}
 
       </div>
     </section>

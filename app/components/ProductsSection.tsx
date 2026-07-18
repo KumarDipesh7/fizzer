@@ -185,9 +185,9 @@ export default function ProductsSection() {
             • PRODUCTS
           </p>
 
-          <h2 className="font-black uppercase leading-none text-5xl md:text-7xl">
+          <h3 className="font-black uppercase leading-none text-5xl md:text-5xl">
             PICK WHAT FITS YOUR GAME
-          </h2>
+          </h3>
 
           <p className="mt-8 text-xl leading-10 text-gray-300">
             Every setup below is tested on real gameplay before it reaches

@@ -43,7 +43,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="#vid"
+            href="#watch"
             className="transition hover:text-red-500"
           >
             Watch

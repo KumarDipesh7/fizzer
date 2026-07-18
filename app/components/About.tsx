@@ -51,7 +51,7 @@ export default function About() {
             • ABOUT FIZZER
           </p>
 
-          <h2 className="max-w-4xl text-5xl font-black uppercase leading-[0.95] md:text-7xl">
+          <h2 className="max-w-4xl text-5xl font-black uppercase leading-[0.95] md:text-6xl">
             BUILT FOR PLAYERS
             <br />
             WHO WANT REAL

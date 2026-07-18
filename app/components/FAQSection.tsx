@@ -65,7 +65,7 @@ export default function FAQSection() {
             • QUESTIONS
           </p>
 
-          <h2 className="text-5xl font-black uppercase leading-none md:text-7xl">
+          <h2 className="text-5xl font-black uppercase leading-none md:text-6xl">
             BEFORE YOU BUY
           </h2>
         </div>

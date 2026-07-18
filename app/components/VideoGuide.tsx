@@ -33,7 +33,7 @@ const guides = [
 
 export default function VideoGuide() {
   return (
-    <section className="border-y border-white/10 bg-[#171313] py-24 text-white">
+    <section id="watch" className="border-y border-white/10 bg-[#171313] py-24 text-white">
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading */}
         <div className="text-center">
@@ -41,11 +41,11 @@ export default function VideoGuide() {
             • Start Here
           </p>
 
-          <h2 className="mx-auto max-w-4xl text-4xl font-black uppercase leading-none md:text-6xl">
+          <h3 className="mx-auto max-w-4xl text-4xl font-black uppercase leading-none md:text-6xl">
             Not Sure Which One's For You?
             <br />
             Watch This First.
-          </h2>
+          </h3>
         </div>
 
         {/* Video */}

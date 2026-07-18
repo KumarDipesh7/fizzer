@@ -58,25 +58,25 @@ export default function Footer() {
             <ul className="space-y-4 text-xl text-gray-300">
 
               <li>
-                <Link href="#sensitivity" className="transition hover:text-red-500">
+                <Link href="/products/sensitivity" className="transition hover:text-red-500">
                   Sensitivity Setup
                 </Link>
               </li>
 
               <li>
-                <Link href="#layout" className="transition hover:text-red-500">
+                <Link href="/products/control-layout" className="transition hover:text-red-500">
                   Control Layout
                 </Link>
               </li>
 
               <li>
-                <Link href="#thumbnail" className="transition hover:text-red-500">
+                <Link href="/products/thumbnail" className="transition hover:text-red-500">
                   Thumbnail Pack
                 </Link>
               </li>
 
               <li>
-                <Link href="#coaching" className="transition hover:text-red-500">
+                <Link href="/products/one-to-one" className="transition hover:text-red-500">
                   1-on-1 Session
                 </Link>
               </li>
@@ -102,7 +102,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href="#video" className="transition hover:text-red-500">
+                <Link href="#watch" className="transition hover:text-red-500">
                   Watch Intro
                 </Link>
               </li>
@@ -156,7 +156,7 @@ export default function Footer() {
                 </a>
               </li>
 
-              <li>
+              {/* <li>
                 <a
                   href="https://discord.gg/P5kqxM8St7"
                   target="_blank"
@@ -164,7 +164,7 @@ export default function Footer() {
                 >
                   Discord
                 </a>
-              </li>
+              </li> */}
 
             </ul>
 
