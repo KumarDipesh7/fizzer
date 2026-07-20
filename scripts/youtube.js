@@ -25,7 +25,10 @@ async function fetchMostViewed() {
   return {
     id: video.id,
     title: video.snippet.title,
-    thumbnail: video.snippet.thumbnails.medium.url,
+    thumbnail:
+      video.snippet.thumbnails.maxres?.url ||
+      video.snippet.thumbnails.high?.url ||
+      video.snippet.thumbnails.medium.url,
     views: Number(video.statistics.viewCount),
     url: `https://www.youtube.com/watch?v=${video.id}`,
   };
@@ -50,8 +53,11 @@ async function fetchMostRecent() {
   return {
     id: video.id,
     title: video.snippet.title,
-    thumbnail: video.snippet.thumbnails.medium.url,
-    publishedAt: video.snippet.publishedAt, // optional: show upload date
+    thumbnail:
+      video.snippet.thumbnails.maxres?.url ||
+      video.snippet.thumbnails.high?.url ||
+      video.snippet.thumbnails.medium.url,
+    publishedAt: video.snippet.publishedAt,
     url: `https://www.youtube.com/watch?v=${video.id}`,
   };
 }
@@ -63,10 +69,13 @@ async function updateCache() {
       fetchMostRecent(),
     ]);
 
-    await supabase.from('youtube_cache').upsert([
-      { key: 'most_viewed', value: mostViewed },
-      { key: 'most_recent', value: mostRecent },
-    ]);
+    await supabase.from('youtube_cache').upsert(
+      [
+        { key: 'most_viewed', value: mostViewed },
+        { key: 'most_recent', value: mostRecent },
+      ],
+      { onConflict: 'key' }
+    );
 
     console.log('Cache updated successfully!');
   } catch (err) {

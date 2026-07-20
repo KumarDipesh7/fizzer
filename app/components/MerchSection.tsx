@@ -1,47 +1,77 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { IoGameController } from "react-icons/io5";
 
 export default function MerchSection() {
   return (
-    <section id="merch" className="bg-[#f4f4f4] py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-20">
+    <section
+      id="merch"
+      className="relative overflow-hidden border-y border-white/10 bg-[#171313] py-28 text-white"
+    >
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute left-0 top-0 h-[500px] w-[500px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(170,20,35,.12), transparent 70%)",
+          }}
+        />
 
-          {/* LEFT — IMAGE */}
-          <div className="relative h-[420px] lg:h-[520px]">
+        <div
+          className="absolute right-0 bottom-0 h-[500px] w-[500px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(170,20,35,.08), transparent 70%)",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-5xl px-6 text-center">
+
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-red-500">
+          • MERCH
+        </p>
+
+        <h2 className="text-5xl font-black uppercase leading-none md:text-7xl">
+          MERCH DROPS SOON
+        </h2>
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          Get notified the moment it's live —
+          first access, exclusive drops, and no spam.
+        </p>
+
+        {/* Merch Preview */}
+
+        {/* <div className="mx-auto mt-14 max-w-xl overflow-hidden border border-white/10 bg-[#111]">
+          <div className="relative aspect-square">
             <Image
               src="/merch.jpg"
-              alt="Fizzer Merch"
+              alt="Upcoming Merch"
               fill
-              className="object-cover"
-              priority
+              className="object-cover opacity-80"
             />
           </div>
+        </div> */}
 
-          {/* RIGHT — CONTENT */}
-          <div>
-            <div className="mb-6 flex h-10 w-10 items-center justify-center rounded bg-red-600 text-white">
-              <IoGameController size={20} />
-            </div>
+        {/* Notify Form */}
 
-            <h2 className="mb-10 text-5xl font-extrabold uppercase leading-tight text-[#0a0a0a]">
-              Top-Rated
-              <br />
-              Quality
-              <br />
-              Merch
-            </h2>
+        <form className="mx-auto mt-12 flex max-w-xl flex-col overflow-hidden border border-white/10 md:flex-row">
+          <input
+            type="email"
+            placeholder="Your email address"
+            className="flex-1 bg-transparent px-6 py-5 text-white placeholder:text-gray-500 outline-none"
+          />
 
-            <Link
-              href="#"
-              className="inline-flex items-center justify-center bg-red-600 px-10 py-4 text-sm font-bold uppercase tracking-wide text-white hover:bg-red-700 transition"
-            >
-              Coming Soon...
-            </Link>
-          </div>
+          <button
+            type="submit"
+            className="bg-red-600 px-10 py-5 font-bold transition hover:bg-red-700"
+          >
+            Notify Me
+          </button>
+        </form>
 
-        </div>
       </div>
     </section>
   );

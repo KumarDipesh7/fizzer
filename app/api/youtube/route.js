@@ -9,7 +9,7 @@ export async function GET() {
       .in('key', ['most_viewed', 'most_recent']);
 
     if (error || !data) {
-      return NextResponse.json({ most_viewed: null, most_liked: null });
+      return NextResponse.json({ most_viewed: null, most_recent: null });
     }
 
     const mostViewed = data.find(d => d.key === 'most_viewed')?.value;
