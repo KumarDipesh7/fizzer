@@ -8,15 +8,17 @@ const products = [
     category: "Sensitivity",
     title: "STOP GUESSING YOUR SENSITIVITY",
     description:
-      "Get the exact sensitivity code tested for your specific device — not a generic template. Includes drills to make it feel natural within 3 days.",
+      "Get the exact sensitivity tested for your specific device not a generic sensitivity..include drills to make it feel natural within 3-7 days.",
     features: [
       "Device-specific code",
+      "Get 4 sensitivity settings per device",
       "Practice drill guide",
       "Direct support if it doesn't feel right",
     ],
     price: 249,
     button: "Get Now",
     note: "Instant delivery after payment",
+    priceNote: "Starting from",
     href: "/products/sensitivity",
   },
 
@@ -24,10 +26,10 @@ const products = [
     category: "Control Layout",
     title: "FASTER REACTIONS, CLEANER MOVEMENT",
     description:
-      'A control layout designed around real fight scenarios — not just "more buttons." Built for faster peeks, cleaner rotations, less thumb fatigue.',
+      'A control Layout designed around real fight scenarios…Built for faster peeks , Solves all joystick problem..less finger pain.',
     features: [
       "Layout file",
-      "Setup walkthrough",
+      "Get 2 different version",
       "Tested across multiple screen sizes",
     ],
     price: 249,
@@ -37,14 +39,14 @@ const products = [
   },
 
   {
-    category: "Thumbnails",
+    category: "BGMI Thumbnails Pack",
     title: "THUMBNAILS THAT ACTUALLY GET CLICKS",
     description:
-      "A gaming-focused thumbnail asset pack — templates, fonts, and elements used in my own high-performing videos.",
+      "A gaming-focused thumbnail asset pack templates, fonts, and elements used in my own high-performing videos.",
     features: [
       "Editable templates",
       "Font & element pack",
-      "Quick-start guide",
+      "Complete BGMI Thumbnail Pack",
     ],
     price: 349,
     button: "Get Now",
@@ -53,14 +55,15 @@ const products = [
   },
 
   {
-    category: "Editing",
+    category: "Video Editing Pack",
     title: "GIVE YOUR VIDEOS A PROFESSIONAL EDGE",
     description:
-      "Transitions, SFX, and overlay assets used in my own gameplay and story content — built for BGMI-style fast cuts.",
+      "Transitions SFX and overlay assets used in my own youtube and instagram videos built for Gaming Content Creators.",
     features: [
       "Transition pack",
       "SFX library",
       "Overlay assets",
+      "Compatible with any editing software",
     ],
     price: 449,
     button: "Get Now",
@@ -74,8 +77,9 @@ const products = [
     description:
       "A focused 1-on-1 call to work through your specific BGMI setup, gameplay habits, or content growth questions — tailored to you.",
     features: [
-      "30–45 min direct call",
-      "Personalized action plan",
+      "60 minutes direct call",
+      "Your Doubts and My Solution",
+      "Personalized action plans",
     ],
     price: 849,
     button: "Book Now",
@@ -87,7 +91,7 @@ const products = [
 function ProductCard({
   product,
 }: {
-  product: (typeof products)[0];
+  product: (typeof products)[0] & { priceNote?: string };
 }) {
   return (
     <div className="flex flex-col border border-white/10 bg-[#0b0909]">
@@ -129,6 +133,11 @@ function ProductCard({
 
           <div className="flex items-center justify-between">
             <div>
+              {product.priceNote && (
+            <p className="mb-4 font-mono text-sm tracking-wide text-gray-500">
+              {product.priceNote} :
+            </p>
+            )}
               <div className="text-5xl font-black">
                 ₹{product.price}
               </div>
@@ -222,7 +231,7 @@ export default function ProductsSection() {
             </span>
 
             <h3 className="font-black uppercase leading-none text-[34px]">
-              500+ PLAYERS ALREADY USING THESE SETUPS
+              1000+ PLAYERS ALREADY USING THESE SETUPS
             </h3>
 
             <p className="mt-6 text-[17px] leading-9 text-gray-300">

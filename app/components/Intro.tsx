@@ -18,11 +18,11 @@ const stats = [
   },
   {
     icon: Smartphone,
-    text: "41K+ Instagram Community",
+    text: "45K+ Instagram Community",
   },
   {
     icon: Gamepad2,
-    text: "500+ Players & Creators Guided",
+    text: "1000+ Players & Creators Guided",
   },
 ];
 

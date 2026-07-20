@@ -35,7 +35,7 @@ export default function About() {
           <div className="relative aspect-[4/5]">
             {/* Replace with your own image */}
             <Image
-              src="/join-team.jpg"
+              src="/fizzerFace.png"
               alt="FizZer"
               fill
               className="object-cover"
@@ -90,14 +90,14 @@ export default function About() {
             </div>
 
             <div>
-              <h3 className="text-4xl font-black text-white">9M+</h3>
+              <h3 className="text-4xl font-black text-white">10M+</h3>
               <p className="mt-2 text-xs uppercase tracking-[0.25em] text-gray-500">
                 Views
               </p>
             </div>
 
             <div>
-              <h3 className="text-4xl font-black text-white">500+</h3>
+              <h3 className="text-4xl font-black text-white">1000+</h3>
               <p className="mt-2 text-xs uppercase tracking-[0.25em] text-gray-500">
                 Players Guided
               </p>

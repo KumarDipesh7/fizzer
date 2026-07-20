@@ -3,21 +3,36 @@
 import Image from "next/image";
 
 const testimonials1 = [
-  "/testimonials/testimonial1.jpg",
-  "/testimonials/testimonial2.jpg",
-  "/testimonials/testimonial3.jpg",
+  "/testimonials/t1.jpg",
+  "/testimonials/t2.jpg",
+  "/testimonials/t3.png",
+  "/testimonials/t4.png",
+  "/testimonials/t5.png",
+  "/testimonials/t6.png",
+  "/testimonials/t7.jpeg",
+  "/testimonials/t8.jpeg",
 ];
 
 const testimonials2 = [
-  "/testimonials/testimonial4.jpg",
-  "/testimonials/testimonial5.jpg",
-  "/testimonials/testimonial6.jpg",
+  "/testimonials/t9.jpeg",
+  "/testimonials/t10.jpeg",
+  "/testimonials/t11.jpeg",
+  "/testimonials/t12.jpg",
+  "/testimonials/t13.jpg",
+  "/testimonials/t14.jpg",
+  "/testimonials/t15.jpg",
+  "/testimonials/t16.jpg",
 ];
 
 const testimonials3 = [
-  "/testimonials/testimonial7.jpg",
-  "/testimonials/testimonial8.jpg",
-  "/testimonials/testimonial1.jpg",
+  "/testimonials/t17.png",
+  "/testimonials/t18.png",
+  "/testimonials/t19.png",
+  "/testimonials/t20.png",
+  "/testimonials/t21.png",
+  "/testimonials/t22.png",
+  "/testimonials/t23.png",
+  "/testimonials/t24.png",
 ];
 
 const dup = (arr: string[]) => [...arr, ...arr, ...arr, ...arr];

@@ -42,12 +42,13 @@ export default function Navbar() {
             Products
           </Link>
 
-          <Link
+          
+          {/* <Link
             href="#watch"
             className="transition hover:text-red-500"
           >
             Watch
-          </Link>
+          </Link> */}
 
           <Link
             href="#about"

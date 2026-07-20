@@ -106,6 +106,11 @@ export default function ControlLayoutPage() {
               control codes cannot be shared. You’ll receive
               clear reference guidance for accurate manual setup.
             </li>
+
+            <li>
+              <strong>❌ Control Code is not Given</strong><br />
+              Because the in-game code got expired and the buttons position might change according to device size.
+            </li>
           </ul>
 
           {/* BONUS */}

@@ -5,22 +5,28 @@ import Link from "next/link";
 import { useState } from "react";
 
 const DEVICE_OPTIONS = [
-  { label: "iPhone", url: "https://superprofile.bio/ps/69644efe172da70013b9b253" },
-  { label: "OnePlus", url: "https://superprofile.bio/ps/696454abe6d479001399aaae" },
-  { label: "Samsung", url: "https://superprofile.bio/ps/6964562d172da70013ba8506" },
-  { label: "Infinix", url: "https://superprofile.bio/ps/696456bfe6d479001399f46c" },
-  { label: "Motorola", url: "https://superprofile.bio/ps/69645949172da70013baf4da" },
-  { label: "Nothing", url: "https://superprofile.bio/ps/696459e9172da70013bb0cfd" },
-  { label: "Oppo", url: "https://superprofile.bio/ps/69645b70172da70013bb4b94" },
-  { label: "Realme", url: "https://superprofile.bio/ps/69645bede6d47900139ab6c0" },
-  { label: "Redmi / Poco / Xiaomi", url: "https://superprofile.bio/ps/69645cc538d1870014f9f6be" },
-  { label: "IQOO / VIVO", url: "https://superprofile.bio/ps/696458b4e6d47900139a35cb" },
+  { label: "iPhone Sensitivity", url: "https://superprofile.bio/ps/6a57192b4c35aa0013ac2ef2", price: 249 },
+  { label: "Google Phone Sensitivity", url: "https://superprofile.bio/ps/6a577209a7e5350013a89896", price: 249 },
+  { label: "OnePlus Sensitivity", url: "https://superprofile.bio/ps/6a572480d2a88e001371ef7d", price: 249 },
+  { label: "Samsung Sensitivity", url: "https://superprofile.bio/ps/6a5727bd50d9ee0013c5c74d", price: 249 },
+  { label: "Infinix Sensitivity", url: "https://superprofile.bio/ps/6a572961d2a88e001373230b", price: 249 },
+  { label: "Motorola Sensitivity", url: "https://superprofile.bio/ps/6a5765746263440013447f9f", price: 249 },
+  { label: "Nothing Sensitivity", url: "https://superprofile.bio/ps/6a576738626344001344dbaa", price: 249 },
+  { label: "Oppo Sensitivity", url: "https://superprofile.bio/ps/6a576982c5506000149d44e9", price: 249 },
+  { label: "Realme Sensitivity", url: "https://superprofile.bio/ps/6a576c81ab6278001379d111", price: 249 },
+  { label: "Poco / Redmi / Xiaomi Sensitivity", url: "https://superprofile.bio/ps/6a576dc7ab627800137a1bbb", price: 249 },
+  { label: "IQOO / VIVO Sensitivity", url: "https://superprofile.bio/ps/6a572e132726380013a49dac", price: 249 },
+  { label: "All Guns Customized Sensitivity", url: "https://superprofile.bio/ps/6a5c7663336dff0013e21eb2", price: 349 },
+  { label: "PUBG Mobile Global Sensitivity", url: "https://superprofile.bio/ps/6a5d938fad1b700013458780", price: 299 },
 ];
 
 export default function SensitivityPage() {
   const [showTerms, setShowTerms] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState<string>("");
+
+  const selectedOption = DEVICE_OPTIONS.find((d) => d.url === selectedDevice);
+  const displayPrice = selectedOption ? selectedOption.price : 249;
 
   const closeModal = () => {
     setShowTerms(false);
@@ -87,8 +93,13 @@ export default function SensitivityPage() {
 
           <ul className="space-y-4 text-gray-300">
             <li>
-              <strong>🎯 3 Sensitivity Options per Device</strong><br />
-              Low, Medium, and High — choose what fits your playstyle.
+              <strong>🎯 4 Sensitivity Options per Device</strong><br />
+              Red Dot, 3X, 4X, 6X — choose what fits your playstyle.
+            </li>
+
+            <li>
+              <strong>🎯 Non-Gyro and Low , Medium ,High Gyro Sensitivity</strong><br />
+              — choose what fits your style
             </li>
 
             <li>
@@ -104,6 +115,11 @@ export default function SensitivityPage() {
             <li>
               <strong>💸 Low-Cost, High-Value Setup</strong><br />
               Premium sensitivity setups at a budget-friendly price.
+            </li>
+
+            <li>
+              <strong>❌ Sensitivity Code is not Given</strong><br />
+              Because the in-game code got expired.
             </li>
           </ul>
 
@@ -146,7 +162,7 @@ export default function SensitivityPage() {
                   onChange={(e) => setSelectedDevice(e.target.value)}
                   className="w-full appearance-none bg-black border border-white/20 px-4 py-3 pr-10 text-white focus:border-red-500 outline-none rounded-md"
                 >
-                  <option value="">Choose your device</option>
+                  <option value="">Choose your sensitivity setup</option>
                   {DEVICE_OPTIONS.map((d) => (
                     <option key={d.url} value={d.url}>
                       {d.label}
@@ -166,7 +182,7 @@ export default function SensitivityPage() {
                   Price
                 </span>
                 <span className="text-3xl font-extrabold text-red-500">
-                  ₹249
+                  ₹{displayPrice}
                 </span>
               </div>
             </div>

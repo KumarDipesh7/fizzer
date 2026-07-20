@@ -38,7 +38,7 @@ export default function Hero() {
               <h1
                 className="font-black uppercase tracking-tight"
                 style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
+                  fontSize: "clamp(2.25rem, 3vw, 4.5rem)",
                   lineHeight: 0.98,
                 }}
               >
@@ -68,40 +68,34 @@ export default function Hero() {
                   Get My Setup →
                 </Link>
 
-                <Link
+                {/* <Link
                   href="#watch"
                   className="text-gray-300 underline underline-offset-4 hover:text-white"
                   style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.125rem)" }}
                 >
                   ▶ Watch the intro video
-                </Link>
+                </Link> */}
               </div>
             </div>
 
             {/* RIGHT SIDE */}
             <div className="flex items-center justify-center">
-              <div className="relative aspect-[4/5] w-full max-w-md border border-white/10 bg-[#111]">
+              <div className="relative aspect-[4/5] w-full max-w-md border border-white/10 bg-[#111] overflow-hidden">
                 <div
-                  className="absolute inset-0 opacity-20"
+                  className="absolute inset-0 opacity-20 z-10"
                   style={{
                     backgroundImage:
                       "repeating-linear-gradient(135deg, transparent 0px, transparent 22px, rgba(255,255,255,.05) 22px, rgba(255,255,255,.05) 24px)",
                   }}
                 />
 
-                <div className="flex h-full items-center justify-center text-center">
-                  <div>
-                    <div className="mb-4 text-5xl opacity-40">🖼️</div>
-                    <p className="uppercase tracking-[0.3em] text-gray-500">
-                      Your Photo / Gameplay Clip
-                    </p>
-                    <p className="mt-1 uppercase tracking-[0.3em] text-gray-500">
-                      Goes Here
-                    </p>
-                  </div>
-                </div>
+                <img
+                  src="/fizzer.svg"
+                  alt="FizZer"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
 
-                <div className="absolute bottom-6 left-6 text-[11px] uppercase tracking-[0.3em] text-gray-400">
+                <div className="absolute bottom-6 left-6 z-20 text-[11px] uppercase tracking-[0.3em] text-gray-400">
                   FizZer — BGMI Creator // Est. Lobby Legend
                 </div>
               </div>

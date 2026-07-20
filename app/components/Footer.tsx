@@ -101,11 +101,11 @@ export default function Footer() {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <Link href="#watch" className="transition hover:text-red-500">
                   Watch Intro
                 </Link>
-              </li>
+              </li> */}
 
               <li>
                 <Link href="#faq" className="transition hover:text-red-500">

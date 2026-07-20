@@ -6,23 +6,27 @@ const faqs = [
   {
     question: "Will this work for my device?",
     answer:
-      "Yes — sensitivity and control layouts are tested across a wide range of screen sizes and devices. If something doesn't feel right, reach out and I'll help you adjust it.",
+      "Yes — sensitivity and control layouts are tested across a wide range of screen sizes and devices. ",
   },
   {
     question: "How do I receive my setup after payment?",
     answer:
-      "Delivery is instant — you'll get your code, layout file, or asset pack immediately after checkout, along with a setup guide.",
+      "Delivery is instant — you'll get your senstivity, layout file, or asset pack immediately after checkout, along with a setup guide.",
   },
   {
     question: "Is there a refund if it doesn't work for me?",
     answer:
-      "Follow the included drill/setup guide first. Most issues are solved after following the included instructions. If your setup genuinely doesn't work for your device, contact me directly and I'll personally help you.",
+      "Follow the included drill/setup guide first. Most issues are solved after following the included instructions. But this is not refundable.",
   },
   {
     question: "Can I book a 1-on-1 session for something not listed?",
     answer:
       "Yes. The 1-on-1 session is completely personalized. Whether it's gameplay, sensitivity, content creation, YouTube growth or anything else, we'll work on exactly what you need.",
   },
+  {
+    question: "Do these setup one time purchase and I will be getting setups for every next update in future?",
+    answer: "No, These setups are being tested after every new update and then new setups are launched on the website, It really requires lot of time and efforts. So, You will have to renew your setups after every update by re purchasing it.",
+  }
 ];
 
 export default function FAQSection() {
