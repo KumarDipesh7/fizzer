@@ -99,32 +99,32 @@ export default function NewVideoSection() {
       : null;
 
   return (
-    <section id="vid" className="border-y border-white/10 bg-[#171313] py-28 text-white">
+    <section id="vid" className="border-y border-white/10 bg-[#171313] py-16 lg:py-28 text-white">
       <div className="mx-auto max-w-7xl px-6">
         {/* ================= YOUTUBE CAROUSEL ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] items-center gap-10 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] items-center gap-8 lg:gap-16">
           {/* LEFT INFO */}
-          <div className={`transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
-            <p className="mb-3 text-xs uppercase tracking-widest text-red-500">
+          <div className={`text-center lg:text-left transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <p className="mb-2 lg:mb-3 text-[10px] lg:text-xs uppercase tracking-widest text-red-500">
               {currentVideo?.type === 'viewed' ? 'Most Viewed Video' : 'Latest Upload'}
             </p>
 
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase leading-[1] md:leading-[0.95]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-[1] lg:leading-[0.95]">
               Featured
               <br />
               <span className="text-white">Video</span>
             </h2>
 
-            <p className="mt-6 max-w-sm text-gray-400 text-sm leading-relaxed">
+            <p className="mx-auto lg:mx-0 mt-4 lg:mt-6 max-w-sm text-gray-400 text-sm leading-relaxed">
               {loadError
                 ? 'Could not load video right now.'
                 : currentVideo?.title || 'Loading top video...'}
             </p>
 
             {metric && (
-              <div className="mt-6 flex items-center gap-6">
-                <span className="text-red-500 text-sm font-bold">{metric}</span>
-                <span className="h-px w-12 bg-red-600" />
+              <div className="mt-6 flex items-center justify-center lg:justify-start gap-6">
+                <span className="text-red-500 text-xs lg:text-sm font-bold">{metric}</span>
+                <span className="h-px w-8 lg:w-12 bg-red-600" />
               </div>
             )}
           </div>
@@ -141,7 +141,7 @@ export default function NewVideoSection() {
               }
             }}
             aria-label={currentVideo ? `Watch: ${currentVideo.title}` : undefined}
-            className="relative h-[260px] sm:h-[320px] md:h-[420px] w-full overflow-hidden group cursor-pointer bg-black"
+            className="relative h-[220px] sm:h-[320px] lg:h-[420px] w-full overflow-hidden group cursor-pointer bg-black"
           >
             {currentVideo ? (
               <div
@@ -153,15 +153,15 @@ export default function NewVideoSection() {
                   src={currentVideo.thumbnail}
                   alt={currentVideo.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-110"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/40 backdrop-blur-md group-hover:scale-110 transition">
-                    <span className="ml-1 text-3xl">▶</span>
+                  <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full border border-white/40 backdrop-blur-md group-hover:scale-110 transition">
+                    <span className="ml-1 text-2xl lg:text-3xl">▶</span>
                   </div>
                 </div>
 

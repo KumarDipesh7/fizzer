@@ -3,13 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import FizzerImg from "@/public/fizzer.svg";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Make the navbar fixed on mobile ONLY when on the homepage.
+  // On desktop (md: and up), or on any other page, it remains absolute.
+  const isHome = pathname === "/";
+  const positionClass = isHome ? "fixed md:absolute" : "absolute";
 
   return (
-    <header className="absolute top-0 left-0 z-50 w-full border-b border-white/10 bg-[#090909]/95 backdrop-blur-sm">
+    <header className={`${positionClass} top-0 left-0 z-50 w-full border-b border-white/10 bg-[#090909]/95 backdrop-blur-sm`}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
@@ -42,7 +49,7 @@ export default function Navbar() {
             Products
           </Link>
 
-          
+
           {/* <Link
             href="#watch"
             className="transition hover:text-red-500"
@@ -121,13 +128,13 @@ export default function Navbar() {
             Products
           </Link>
 
-          <Link
+          {/* <Link
             onClick={() => setOpen(false)}
             href="#watch"
             className="py-3 hover:text-red-500"
           >
             Watch
-          </Link>
+          </Link> */}
 
           <Link
             onClick={() => setOpen(false)}

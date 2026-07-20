@@ -138,7 +138,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="https://instagram.com/fizzer_bgmi"
+                  href="https://instagram.com/only_fizzer"
                   target="_blank"
                   className="transition hover:text-red-500"
                 >

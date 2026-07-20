@@ -95,28 +95,28 @@ function ProductCard({
 }) {
   return (
     <div className="flex flex-col border border-white/10 bg-[#0b0909]">
-      <div className="flex flex-1 flex-col p-9">
+      <div className="flex flex-1 flex-col p-6 lg:p-9">
         {/* Category */}
-        <span className="mb-6 text-xs uppercase tracking-[0.35em] text-red-500">
+        <span className="mb-4 lg:mb-6 text-[10px] lg:text-xs uppercase tracking-[0.35em] text-red-500">
           {product.category}
         </span>
 
         {/* Title */}
-        <h3 className="font-black uppercase leading-none text-[34px]">
+        <h3 className="font-black uppercase leading-none text-2xl lg:text-[34px]">
           {product.title}
         </h3>
 
         {/* Description */}
-        <p className="mt-6 text-[17px] leading-9 text-gray-300">
+        <p className="mt-4 lg:mt-6 text-base lg:text-[17px] leading-relaxed lg:leading-9 text-gray-300">
           {product.description}
         </p>
 
         {/* Features */}
-        <ul className="mt-10 space-y-3">
+        <ul className="mt-8 lg:mt-10 space-y-3">
           {product.features.map((feature) => (
             <li
               key={feature}
-              className="flex items-start gap-3 text-lg text-gray-400"
+              className="flex items-start gap-3 text-base lg:text-lg text-gray-400"
             >
               <Check
                 size={18}
@@ -128,30 +128,30 @@ function ProductCard({
           ))}
         </ul>
 
-        <div className="mt-auto pt-12">
-          <div className="mb-7 border-t border-white/10" />
+        <div className="mt-auto pt-8 lg:pt-12">
+          <div className="mb-6 lg:mb-7 border-t border-white/10" />
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between lg:gap-0">
             <div>
               {product.priceNote && (
-            <p className="mb-4 font-mono text-sm tracking-wide text-gray-500">
+            <p className="mb-2 lg:mb-4 font-mono text-xs lg:text-sm tracking-wide text-gray-500">
               {product.priceNote} :
             </p>
             )}
-              <div className="text-5xl font-black">
+              <div className="text-4xl lg:text-5xl font-black">
                 ₹{product.price}
               </div>
             </div>
 
             <Link
               href={product.href}
-              className="bg-red-600 px-8 py-4 font-semibold transition hover:bg-red-700"
+              className="w-full sm:w-auto bg-red-600 px-6 py-3 lg:px-8 lg:py-4 text-center font-semibold transition hover:bg-red-700"
             >
               {product.button}
             </Link>
           </div>
 
-          <p className="mt-5 font-mono text-sm tracking-wide text-gray-500">
+          <p className="mt-4 lg:mt-5 font-mono text-xs lg:text-sm tracking-wide text-gray-500">
             {product.note}
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-[#161212] py-28 text-white"
+      className="relative overflow-hidden bg-[#161212] py-16 lg:py-28 text-white"
     >
       {/* Background Glow */}
 
@@ -189,16 +189,16 @@ export default function ProductsSection() {
       <div className="relative mx-auto max-w-7xl px-6">
         {/* Header */}
 
-        <div className="mb-20 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.45em] text-red-500">
+        <div className="mb-12 lg:mb-20 max-w-3xl">
+          <p className="mb-3 lg:mb-4 text-[10px] lg:text-xs uppercase tracking-[0.45em] text-red-500">
             • PRODUCTS
           </p>
 
-          <h3 className="font-black uppercase leading-none text-5xl md:text-5xl">
+          <h3 className="font-black uppercase leading-none text-4xl lg:text-5xl">
             PICK WHAT FITS YOUR GAME
           </h3>
 
-          <p className="mt-8 text-xl leading-10 text-gray-300">
+          <p className="mt-6 lg:mt-8 text-lg lg:text-xl leading-relaxed lg:leading-10 text-gray-300">
             Every setup below is tested on real gameplay before it reaches
             you — not recycled templates.
           </p>
@@ -225,28 +225,28 @@ export default function ProductsSection() {
 
           {/* Results Card */}
 
-          <div className="flex flex-col border border-white/10 bg-[#161212] p-9">
-            <span className="mb-6 text-xs uppercase tracking-[0.35em] text-red-500">
+          <div className="flex flex-col border border-white/10 bg-[#161212] p-6 lg:p-9">
+            <span className="mb-4 lg:mb-6 text-[10px] lg:text-xs uppercase tracking-[0.35em] text-red-500">
               Results
             </span>
 
-            <h3 className="font-black uppercase leading-none text-[34px]">
+            <h3 className="font-black uppercase leading-none text-2xl lg:text-[34px]">
               1000+ PLAYERS ALREADY USING THESE SETUPS
             </h3>
 
-            <p className="mt-6 text-[17px] leading-9 text-gray-300">
+            <p className="mt-4 lg:mt-6 text-base lg:text-[17px] leading-relaxed lg:leading-9 text-gray-300">
               Every product is built from what's actually tested in real
               matches — not theory. Scroll down for real results from
               real buyers.
             </p>
 
-            <div className="mt-auto pt-16">
+            <div className="mt-auto pt-10 lg:pt-16">
               <Link
                 href="#testimonials"
-                className="inline-flex items-center gap-2 text-2xl font-semibold underline underline-offset-8 transition hover:text-red-500"
+                className="inline-flex items-center gap-2 text-xl lg:text-2xl font-semibold underline underline-offset-8 transition hover:text-red-500"
               >
                 See what players say
-                <span className="text-3xl">↓</span>
+                <span className="text-2xl lg:text-3xl">↓</span>
               </Link>
             </div>
           </div>

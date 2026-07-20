@@ -82,7 +82,7 @@ export default function JoinSection() {
           </a>
 
           <a
-            href="https://www.instagram.com/fizzer_bgmi"
+            href="https://www.instagram.com/only_fizzer"
             target="_blank"
             className="group border border-white/10 bg-[#0d0b0b] p-8 transition hover:border-red-600"
           >
