@@ -8,6 +8,7 @@ const DEVICE_OPTIONS = [
   { label: "All Guns Customized Sensitivity", url: "https://superprofile.bio/ps/6a5c7663336dff0013e21eb2", price: 349 },
   { label: "PUBG Mobile Global Sensitivity", url: "https://superprofile.bio/ps/6a5d938fad1b700013458780", price: 299 },
   { label: "iPhone Sensitivity", url: "https://superprofile.bio/ps/6a57192b4c35aa0013ac2ef2", price: 249 },
+  { label: "iPad Senstivity", url: "https://superprofile.bio/ps/6a5f0318cbc2ff0013198fe4", price: 249 },
   { label: "Google Phone Sensitivity", url: "https://superprofile.bio/ps/6a577209a7e5350013a89896", price: 249 },
   { label: "OnePlus Sensitivity", url: "https://superprofile.bio/ps/6a572480d2a88e001371ef7d", price: 249 },
   { label: "Samsung Sensitivity", url: "https://superprofile.bio/ps/6a5727bd50d9ee0013c5c74d", price: 249 },
@@ -190,10 +191,9 @@ export default function SensitivityPage() {
             onClick={() => selectedDevice && setShowTerms(true)}
             disabled={!selectedDevice}
             className={`w-full py-4 text-sm font-bold uppercase transition
-              ${
-                selectedDevice
-                  ? "bg-red-600 hover:bg-red-700"
-                  : "bg-red-600/40 cursor-not-allowed"
+              ${selectedDevice
+                ? "bg-red-600 hover:bg-red-700"
+                : "bg-red-600/40 cursor-not-allowed"
               }`}
           >
             Continue to Purchase
@@ -262,10 +262,9 @@ export default function SensitivityPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`px-6 py-3 text-sm font-bold uppercase rounded-md text-center transition
-                  ${
-                    accepted
-                      ? "bg-red-600 hover:bg-red-700"
-                      : "bg-red-600/40 pointer-events-none cursor-not-allowed"
+                  ${accepted
+                    ? "bg-red-600 hover:bg-red-700"
+                    : "bg-red-600/40 pointer-events-none cursor-not-allowed"
                   }`}
               >
                 I Agree & Continue
