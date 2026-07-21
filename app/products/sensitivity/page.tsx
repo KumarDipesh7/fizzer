@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 const DEVICE_OPTIONS = [
+  { label: "All Guns Customized Sensitivity", url: "https://superprofile.bio/ps/6a5c7663336dff0013e21eb2", price: 349 },
+  { label: "PUBG Mobile Global Sensitivity", url: "https://superprofile.bio/ps/6a5d938fad1b700013458780", price: 299 },
   { label: "iPhone Sensitivity", url: "https://superprofile.bio/ps/6a57192b4c35aa0013ac2ef2", price: 249 },
   { label: "Google Phone Sensitivity", url: "https://superprofile.bio/ps/6a577209a7e5350013a89896", price: 249 },
   { label: "OnePlus Sensitivity", url: "https://superprofile.bio/ps/6a572480d2a88e001371ef7d", price: 249 },
@@ -16,8 +18,6 @@ const DEVICE_OPTIONS = [
   { label: "Realme Sensitivity", url: "https://superprofile.bio/ps/6a576c81ab6278001379d111", price: 249 },
   { label: "Poco / Redmi / Xiaomi Sensitivity", url: "https://superprofile.bio/ps/6a576dc7ab627800137a1bbb", price: 249 },
   { label: "IQOO / VIVO Sensitivity", url: "https://superprofile.bio/ps/6a572e132726380013a49dac", price: 249 },
-  { label: "All Guns Customized Sensitivity", url: "https://superprofile.bio/ps/6a5c7663336dff0013e21eb2", price: 349 },
-  { label: "PUBG Mobile Global Sensitivity", url: "https://superprofile.bio/ps/6a5d938fad1b700013458780", price: 299 },
 ];
 
 export default function SensitivityPage() {
@@ -94,11 +94,7 @@ export default function SensitivityPage() {
           <ul className="space-y-4 text-gray-300">
             <li>
               <strong>🎯 4 Sensitivity Options per Device</strong><br />
-              Red Dot, 3X, 4X, 6X — choose what fits your playstyle.
-            </li>
-
-            <li>
-              <strong>🎯 Non-Gyro and Low , Medium ,High Gyro Sensitivity</strong><br />
+              Non-Gyro and Low , Medium ,High Gyro Sensitivity
               — choose what fits your style
             </li>
 

@@ -15,6 +15,29 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const positionClass = isHome ? "fixed md:absolute" : "absolute";
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname !== "/") return; // Let default Link behavior work if not on home
+
+    if (href === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", "/");
+      setOpen(false);
+      return;
+    }
+
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const id = href.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `/${href}`);
+      }
+      setOpen(false);
+    }
+  };
+
   return (
     <header className={`${positionClass} top-0 left-0 z-50 w-full border-b border-white/10 bg-[#090909]/95 backdrop-blur-sm`}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -37,6 +60,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium text-gray-300">
           <Link
             href="/"
+            onClick={(e) => handleScroll(e, "/")}
             className="text-white transition hover:text-red-500"
           >
             Home
@@ -44,21 +68,15 @@ export default function Navbar() {
 
           <Link
             href="#products"
+            onClick={(e) => handleScroll(e, "#products")}
             className="transition hover:text-red-500"
           >
             Products
           </Link>
 
-
-          {/* <Link
-            href="#watch"
-            className="transition hover:text-red-500"
-          >
-            Watch
-          </Link> */}
-
           <Link
             href="#about"
+            onClick={(e) => handleScroll(e, "#about")}
             className="transition hover:text-red-500"
           >
             About
@@ -66,6 +84,7 @@ export default function Navbar() {
 
           <Link
             href="#faq"
+            onClick={(e) => handleScroll(e, "#faq")}
             className="transition hover:text-red-500"
           >
             FAQ
@@ -75,6 +94,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <Link
           href="#products"
+          onClick={(e) => handleScroll(e, "#products")}
           className="hidden md:flex items-center bg-red-600 px-7 py-3 font-semibold text-white transition duration-300 hover:bg-red-700"
         >
           Get My Setup
@@ -113,48 +133,40 @@ export default function Navbar() {
       >
         <nav className="flex flex-col border-t border-white/10 px-6 py-6 text-lg text-gray-300">
           <Link
-            onClick={() => setOpen(false)}
             href="/"
+            onClick={(e) => handleScroll(e, "/")}
             className="py-3 hover:text-red-500"
           >
             Home
           </Link>
 
           <Link
-            onClick={() => setOpen(false)}
             href="#products"
+            onClick={(e) => handleScroll(e, "#products")}
             className="py-3 hover:text-red-500"
           >
             Products
           </Link>
 
-          {/* <Link
-            onClick={() => setOpen(false)}
-            href="#watch"
-            className="py-3 hover:text-red-500"
-          >
-            Watch
-          </Link> */}
-
           <Link
-            onClick={() => setOpen(false)}
             href="#about"
+            onClick={(e) => handleScroll(e, "#about")}
             className="py-3 hover:text-red-500"
           >
             About
           </Link>
 
           <Link
-            onClick={() => setOpen(false)}
             href="#faq"
+            onClick={(e) => handleScroll(e, "#faq")}
             className="py-3 hover:text-red-500"
           >
             FAQ
           </Link>
 
           <Link
-            onClick={() => setOpen(false)}
             href="#products"
+            onClick={(e) => handleScroll(e, "#products")}
             className="mt-5 bg-red-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-red-700"
           >
             Get My Setup
